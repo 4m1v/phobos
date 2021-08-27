@@ -2,8 +2,6 @@ import { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 // @ts-ignore
-import { AwesomeButton } from 'react-awesome-button';
-// @ts-ignore
 import ReactWordcloud from 'react-wordcloud';
 
 interface CategoriesProps {
