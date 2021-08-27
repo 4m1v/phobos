@@ -1,0 +1,502 @@
+[
+  {
+    "link": "https://i.imgur.com/AATZ7lt.gifv",
+    "score": 2936,
+    "ratio": 0.99
+  },
+  {
+    "link": "http://i.imgur.com/ygaFdck.png",
+    "score": 2914,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://gfycat.com/tallnervousearwig",
+    "score": 2644,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/00w454phmyi21.jpg",
+    "score": 2592,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/j86yy5r1zhm21.jpg",
+    "score": 2437,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/2gv8b8iwh4n21.png",
+    "score": 2381,
+    "ratio": 1.0
+  },
+  {
+    "link": "https://v.redd.it/b8j6uxo9tok31",
+    "score": 2116,
+    "ratio": 1.0
+  },
+  {
+    "link": "https://i.imgur.com/v32y13Q.jpg",
+    "score": 1987,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/lgmiqej5sam21.jpg",
+    "score": 1911,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/ve77y7xu4ov11.jpg",
+    "score": 1821,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://v.redd.it/717g7vq4v2p21",
+    "score": 1748,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/u910f2ghnjf21.jpg",
+    "score": 1730,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/xxaa7d3abbn21.jpg",
+    "score": 1663,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/74ustzbx56f21.jpg",
+    "score": 1601,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/tjgoywbz99721.jpg",
+    "score": 1583,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/nx5u88clmww21.jpg",
+    "score": 1589,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.imgur.com/2O5zS1k.jpg",
+    "score": 1503,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.imgur.com/wUnALnf.jpg",
+    "score": 1504,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/82mxgfqz65j21.jpg",
+    "score": 1507,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/jf4vdt29p5121.jpg",
+    "score": 1489,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/vpobkgltu0w21.jpg",
+    "score": 1442,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/5zmqqjzqed231.jpg",
+    "score": 1400,
+    "ratio": 1.0
+  },
+  {
+    "link": "https://v.redd.it/y9rxuk34qu931",
+    "score": 1395,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://imgur.com/EpV6hZS.jpg",
+    "score": 1394,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/xhzdwt7e3mn31.jpg",
+    "score": 1389,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/cbv3je22pt121.jpg",
+    "score": 1321,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/heddmrnvdnb31.jpg",
+    "score": 1319,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/qdqyhc475xh21.gif",
+    "score": 1233,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/6dscc40x63o21.jpg",
+    "score": 1235,
+    "ratio": 0.98
+  },
+  {
+    "link": "http://i.imgur.com/RZ8fnlo.jpg",
+    "score": 1204,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/1vf8uwumktg31.jpg",
+    "score": 1200,
+    "ratio": 1.0
+  },
+  {
+    "link": "https://i.redd.it/mxhclag4xxj21.jpg",
+    "score": 1172,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/ony45pvfbep31.jpg",
+    "score": 1166,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/uu7o8dkad5331.jpg",
+    "score": 1117,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/9nigc2o5cls31.jpg",
+    "score": 1094,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/ktgz55zb1zb31.jpg",
+    "score": 1070,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.imgur.com/2gwZFCM.jpg",
+    "score": 1065,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/s7kwqrpsb7k21.jpg",
+    "score": 1056,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/chvocgeg47u21.jpg",
+    "score": 1050,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/ssdysxlgy9m61.jpg",
+    "score": 1025,
+    "ratio": 1.0
+  },
+  {
+    "link": "https://i.imgur.com/nz56Cgm.jpg",
+    "score": 1017,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/pl9cpbwpu8131.jpg",
+    "score": 1017,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/776oetv8m1o31.jpg",
+    "score": 1006,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://gfycat.com/handsomeopeniberiannase",
+    "score": 1004,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/6ova9t55egr21.jpg",
+    "score": 998,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/s8d75w0nh0x21.jpg",
+    "score": 988,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.imgur.com/mVoKsG1.jpg",
+    "score": 990,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://v.redd.it/s8krtqxeha041",
+    "score": 971,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/atr5zyokcpv31.jpg",
+    "score": 961,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/bplz8eri9w241.jpg",
+    "score": 939,
+    "ratio": 0.98
+  },
+  {
+    "link": "http://imgur.com/5Ncu19h",
+    "score": 922,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/wgku78phf3j31.jpg",
+    "score": 924,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/6bm0iljjez441.jpg",
+    "score": 924,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://imgur.com/y0t8pgt",
+    "score": 920,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://www.reddit.com/gallery/jluqtx",
+    "score": 914,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/3m60euyyaqm31.jpg",
+    "score": 905,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/c22coe0te5n31.jpg",
+    "score": 904,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://v.redd.it/yvlmsi1vtad31",
+    "score": 907,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/9lpftv1gkat21.jpg",
+    "score": 895,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.imgur.com/4Tll79b.jpg",
+    "score": 895,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/k642d8isenc31.jpg",
+    "score": 892,
+    "ratio": 0.96
+  },
+  {
+    "link": "https://i.redd.it/ig8mwusmq6p11.png",
+    "score": 883,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/vv9crois0hn31.jpg",
+    "score": 872,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/ueyf3nhl61n21.jpg",
+    "score": 865,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/igguweigk8q31.jpg",
+    "score": 862,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/le53bk8ohww11.jpg",
+    "score": 862,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/84oi2uekvas31.jpg",
+    "score": 858,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/9ylffi8gvbv31.png",
+    "score": 836,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/0c8eylgufoa31.jpg",
+    "score": 842,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://v.redd.it/260eoe02jps31",
+    "score": 834,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://v.redd.it/pdlunvi2qit21",
+    "score": 832,
+    "ratio": 0.95
+  },
+  {
+    "link": "https://imgur.com/a/dsobwih",
+    "score": 830,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/2ksrhhzf2hi51.jpg",
+    "score": 810,
+    "ratio": 0.98
+  },
+  {
+    "link": "http://i.imgur.com/35cXA0u.gifv",
+    "score": 809,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/jpxagjznxbg21.jpg",
+    "score": 806,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/g8snkowr09k41.jpg",
+    "score": 809,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/65rmxw5zz8361.jpg",
+    "score": 802,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/i5ex95xu4dn31.jpg",
+    "score": 799,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://www.reddit.com/r/trypophobia/comments/f3cvbk/i_cant_send_pictures_but_heres_what_it_looks_like/",
+    "score": 801,
+    "ratio": 0.96
+  },
+  {
+    "link": "https://i.redd.it/ndphiywofo251.jpg",
+    "score": 794,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/w5rvfo7sd5b31.jpg",
+    "score": 787,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/i7qsbugsbps01.png",
+    "score": 798,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/1ruck2sxj7i31.jpg",
+    "score": 792,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://v.redd.it/0a7whz05gyo31",
+    "score": 782,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/dz4agw1do8w21.jpg",
+    "score": 773,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/okzf8qztzma21.jpg",
+    "score": 776,
+    "ratio": 0.97
+  },
+  {
+    "link": "https://i.redd.it/fs4c5a2wa7141.jpg",
+    "score": 769,
+    "ratio": 1.0
+  },
+  {
+    "link": "https://i.redd.it/zwr6ffh4rdu31.png",
+    "score": 767,
+    "ratio": 0.99
+  },
+  {
+    "link": "http://i.imgur.com/rOIocDg.gif",
+    "score": 768,
+    "ratio": 0.97
+  },
+  {
+    "link": "https://i.imgur.com/FlFHFPB.jpg",
+    "score": 766,
+    "ratio": 1.0
+  },
+  {
+    "link": "https://i.redd.it/r7q42ribl0w31.png",
+    "score": 772,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/o863t30xlrn31.jpg",
+    "score": 768,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/3s9rxuofmd151.jpg",
+    "score": 756,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/tiri1aqoyg451.jpg",
+    "score": 749,
+    "ratio": 0.97
+  },
+  {
+    "link": "https://i.redd.it/74nkgcfdn0a21.jpg",
+    "score": 749,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://gfycat.com/BasicEdibleLeafbird",
+    "score": 743,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/3kuzbaw60dr31.jpg",
+    "score": 738,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/2x4189c65nb51.jpg",
+    "score": 742,
+    "ratio": 0.98
+  },
+  {
+    "link": "https://i.redd.it/fy4inj9f9xu01.jpg",
+    "score": 743,
+    "ratio": 0.99
+  },
+  {
+    "link": "https://i.redd.it/a1oqn0l6vm231.jpg",
+    "score": 742,
+    "ratio": 0.97
+  }
+]
