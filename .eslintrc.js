@@ -18,10 +18,21 @@ module.exports = {
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   rules: {
-    indent: ['error', 2],
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        semi: true,
+        trailingComma: 'all',
+        singleQuote: true,
+        printWidth: 120,
+        tabWidth: 2,
+        endOfLine: 'auto',
+        endOfLine: 'auto',
+      },
+    ],
   },
 };
