@@ -26,7 +26,7 @@ const Categories = ({ categories }: CategoriesProps): ReactElement => {
   return (
     <div className={classes.root}>
       {categories.map((category) => (
-        <AwesomeButton key={category} type="primary" style={{ margin: 50 }}>
+        <AwesomeButton key={category} type="primary" style={{ margin: 10 }}>
           {category}
         </AwesomeButton>
       ))}
