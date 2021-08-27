@@ -16,7 +16,7 @@ interface PageTitleProps {
 const PageTitle = ({ title }: PageTitleProps): ReactElement => {
   const classes = useStyles();
   return (
-    <Typography variant="h4" className={classes.title} color="textSecondary">
+    <Typography variant="h4" className={classes.title} color="textSecondary" align="center">
       {title}
     </Typography>
   );
