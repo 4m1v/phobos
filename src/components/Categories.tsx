@@ -1,8 +1,10 @@
 import { ReactElement } from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 // @ts-ignore
 import { AwesomeButton } from 'react-awesome-button';
-import 'react-awesome-button/dist/themes/theme-blue.css';
+// @ts-ignore
+import ReactWordcloud from 'react-wordcloud';
 
 interface CategoriesProps {
   categories: string[];
@@ -22,14 +24,27 @@ const useStyles = makeStyles((theme: Theme) =>
 
 // functional component
 const Categories = ({ categories }: CategoriesProps): ReactElement => {
+  const history = useHistory();
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {categories.map((category) => (
-        <AwesomeButton key={category} type="primary" style={{ margin: 10 }}>
-          {category}
-        </AwesomeButton>
-      ))}
+      <ReactWordcloud
+        callbacks={{
+          onWordClick: (word) => history.push(`/phobia/${word.text}`),
+        }}
+        options={{
+          deterministic: true,
+          enableTooltip: false,
+          fontFamily: 'sans-serif',
+          fontSizes: [30, 30],
+          fontStyle: 'italic',
+          padding: 30,
+          rotations: 0,
+        }}
+        words={categories.map((category) => {
+          return { text: category, value: 1 };
+        })}
+      />
     </div>
   );
 };

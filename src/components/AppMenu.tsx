@@ -88,7 +88,7 @@ const Menu: FC<Record<string, never>> = (): ReactElement => {
               </Collapse>
             </>
           ) : (
-            <MenuItem key={route.key} route={route} />
+            route.enabled && <MenuItem key={route.key} route={route} />
           )}
           {route.appendDivider && <Divider className={classes.divider} />}
         </>

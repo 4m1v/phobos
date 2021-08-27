@@ -6,6 +6,7 @@ import SettingsIcon from '@material-ui/icons/SettingsOutlined';
 // components
 import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard';
+import Phobia from '../pages/Phobia';
 import Settings from '../pages/Settings';
 
 // interface
@@ -30,6 +31,15 @@ export const routes: Array<RouteItem> = [
     path: '/dashboard',
     enabled: true,
     component: Dashboard,
+    icon: DashboardIcon,
+  },
+  {
+    key: 'router-phobia',
+    title: 'Phobia',
+    tooltip: 'Phobia',
+    path: '/phobia/:phobia',
+    enabled: false,
+    component: Phobia,
     icon: DashboardIcon,
   },
   {

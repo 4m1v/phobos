@@ -4,8 +4,8 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Slider, Typography, Checkbox, Button } from '@material-ui/core';
 
 // components
-import PageTitle from '../components/PageTitle';
 import BodyContainer from '../components/BodyContainer';
+import PageTitle from '../components/PageTitle';
 
 // constants
 import { APP_TITLE, PAGE_TITLE_SETTINGS } from '../utils/constants';

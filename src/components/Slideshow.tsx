@@ -1,7 +1,6 @@
 import { ReactElement, useState, useRef, useEffect } from 'react';
-import { makeStyles, createStyles, Theme, Button, LinearProgress, Slider } from '@material-ui/core';
-// @ts-ignore
 import { useHistory } from 'react-router-dom';
+import { makeStyles, createStyles, Theme, Button, LinearProgress, Slider } from '@material-ui/core';
 
 // constants
 import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
