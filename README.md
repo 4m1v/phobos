@@ -16,6 +16,11 @@ Entry into SYNCSHACK 2021.
 
 In the project directory, you can run:
 
+### `yarn lint`
+
+Lints the project.\
+Check `.eslintrc.js` and `.prettierrc.js` to change coding standards.
+
 ### `yarn start`
 
 Runs the app in the development mode.\
