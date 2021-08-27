@@ -50,8 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Menu: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const location: any = useLocation();
+  const location = useLocation();
 
   const handleClick = (): void => {
     setOpen(!open);
