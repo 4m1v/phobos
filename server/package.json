@@ -1,0 +1,13 @@
+{
+  "name": "phobos-server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "apollo-server-core": "^3.3.0",
+    "apollo-server-express": "^3.3.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1"
+  }
+}
