@@ -1,4 +1,9 @@
 {
+  "session": {
+    "fearMin": 1,
+    "fearMax": 10,
+    "phobiaId": "trypophobia"
+  },
   "phobias": [
     {
       "id": "acrophobia",
