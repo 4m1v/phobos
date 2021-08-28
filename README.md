@@ -12,6 +12,29 @@ Entry into SYNCSHACK 2021.
 - [Corrade](https://github.com/Corrade)
 - [mr-inaank](https://github.com/mr-inaank)
 
+## Inspiration
+
+One of our friends has an overwhelming fear of spiders. There hasn't been any deaths from a spider bite in Australia since 1979 but that's no comfort. The fear is irrational, persistent, and sometimes overwhelming. They and an estimated **10% of all people** have a **phobia**, an anxiety disorder characterised as a fear of a specific thing or setting. They aren't a joke and seriously affect some people's lives so much so they unhealthily avoid harmless situations.
+
+Luckily, there is a solution! **Exposure theory** is a behaviour theory to treat anxiety disorders like phobia. It works by simply bringing the patient close to the anxiety source without any danger. However, exposure theory isn't super easy to access, particularly during a world wide pandemic...
+
+## What does it do?
+
+**Phobos** is our solution to bring exposure theory to everyone who needs it. It's a simple web app built on psychological principles that gives patients control. Once landing on the home page, a patient will:
+
+1. Click on a specific phobia.
+2. Adjust settings such as their level of fear.
+3. See **zoomed out** images of their fear.
+4. Gradually zoom in and accostom to the fear.
+5. Rate the scariness of the image and move on.
+6. 
+
+We've built our app around a memory based, collaborative filtering recommendation system using adjusted cosine similarity. This 
+
+## How did we build it?
+
+**Phobos** is a full stack web app built in TypeScript using a React frontend and a Node Express backend. We've crafted a minimalist user experience in the Material UI design system. Also, we've used Python scripts to call the Reddit API to create an image set of different phobias.
+
 ## Available Scripts
 
 In the project directory, you can run:
