@@ -112,7 +112,6 @@ const Slideshow: FC<Record<string, never>> = () => {
 
   useEffect(() => {
     playRequest(params.sessionID).then((info) => {
-      console.log(info);
       setImageUrl(info.url);
       setImageId(info.id);
     });
