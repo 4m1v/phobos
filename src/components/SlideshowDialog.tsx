@@ -1,35 +1,25 @@
-import React, { FC, ReactElement, ChangeEvent, useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import clsx from 'clsx';
+import { FC, ChangeEvent } from 'react';
 import {
   makeStyles,
   createStyles,
-  Theme,
   Button,
   Slider,
-  Typography,
   Dialog,
   DialogActions,
   DialogContentText,
   DialogContent,
   DialogTitle,
 } from '@material-ui/core';
-import useCountDown from 'react-countdown-hook';
-import BorderLinearProgress from './BorderLinearProgress';
 
 // constants
-import { ZOOM_MIN, ZOOM_MAX, FEARFACTORMARKS } from '../utils/constants';
-
-interface SlideshowProps {
-  tmp: string;
-}
+import { FEARFACTORMARKS } from '../utils/constants';
 
 /*
 Take in a correctly ordered array of images with their links and ids, and an auto zoom setting (which should be modifiable here)
 */
 
 // define css-in-js
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       backdropFilter: 'blur(8px)',

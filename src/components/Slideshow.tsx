@@ -1,20 +1,8 @@
-import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 import clsx from 'clsx';
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Button,
-  Slider,
-  Typography,
-  Dialog,
-  DialogActions,
-  DialogContentText,
-  DialogContent,
-  DialogTitle,
-} from '@material-ui/core';
+import { makeStyles, createStyles, Theme, Slider, Typography } from '@material-ui/core';
 import useCountDown from 'react-countdown-hook';
 import BorderLinearProgress from './BorderLinearProgress';
 
@@ -23,10 +11,6 @@ import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
 import SlideshowDialog from './SlideshowDialog';
 
 import { playRequest, feedbackRequest } from '../utils/requests';
-
-interface SlideshowProps {
-  tmp: string;
-}
 
 /*
 Take in a correctly ordered array of images with their links and ids, and an auto zoom setting (which should be modifiable here)
@@ -160,8 +144,7 @@ const Slideshow: FC<Record<string, never>> = () => {
         open={dialogOpen}
         isLast={pageMax == pageCurr}
         scariness={scariness}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        setScariness={(n: any) => setScariness(n)}
+        setScariness={(n: number) => setScariness(n)}
         handleClose={() => setDialogOpen(false)}
         onNext={() => {
           feedbackRequest(imageId, params.sessionID, scariness).catch((e) => console.log(e));
@@ -220,9 +203,8 @@ const Slideshow: FC<Record<string, never>> = () => {
           step={zoomIncrement}
           min={ZOOM_MIN}
           max={ZOOM_MAX}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          onChange={(event, newValue: any) => {
-            setZoom(newValue);
+          onChange={(event, newZoom: number) => {
+            setZoom(newZoom);
           }}
         />
       </div>

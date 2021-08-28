@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { Moment } from 'moment';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { ResponsiveLine } from '@nivo/line';
@@ -56,7 +55,7 @@ const dataDefault = [
   },
 ];
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     height: '50vh',
   },
@@ -72,8 +71,6 @@ interface Props {
 const LineGraph = ({ data = dataDefault }: Props): React.ReactElement => {
   const classes = useStyles();
   const colors = useTheme().palette;
-  // const [dates, setDates] = React.useState<Date[]>([]);
-  // const [analytics, setAnalytics] = React.useState([]);
 
   const theme = {
     background: 'transparent',

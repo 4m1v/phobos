@@ -18,6 +18,7 @@ type Method = 'GET' | 'POST';
  * without having to worry about issues with fetch
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const request = (method: Method, url: string, body: any = {}): Promise<any> => {
   const requestOptions: RequestOptions = {
     headers: {

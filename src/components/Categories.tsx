@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Chip, Tooltip, Theme, makeStyles, createStyles } from '@material-ui/core';
+import { Chip, Tooltip, Theme, createStyles, makeStyles } from '@material-ui/core';
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>

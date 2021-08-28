@@ -1,14 +1,9 @@
 import { ReactElement } from 'react';
-import clsx from 'clsx';
-import { AppBar, Toolbar, Typography, IconButton, Tooltip, createStyles, makeStyles, Theme } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { IconButton, Theme, Tooltip, createStyles, makeStyles } from '@material-ui/core';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import { useHistory } from 'react-router-dom';
-
-// constants
-import { APP_TITLE, DRAWER_WIDTH } from '../utils/constants';
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
@@ -48,7 +43,7 @@ interface HeaderProps {
   useDefaultTheme: boolean;
 }
 
-const Header = ({ open, handleMenuOpen, toggleTheme, useDefaultTheme }: HeaderProps): ReactElement => {
+const Header = ({ toggleTheme, useDefaultTheme }: HeaderProps): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const goHome = () => {

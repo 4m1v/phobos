@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import { FC, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 
