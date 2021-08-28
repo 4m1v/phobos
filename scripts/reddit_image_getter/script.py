@@ -1,6 +1,6 @@
 from praw import Reddit
 import json
-import uuid
+import hashlib
 from dotenv import dotenv_values
 
 # Load login details
@@ -22,7 +22,7 @@ for post in subreddit.hot(limit=150):
 # for post in subreddit.top(limit=100):
     if post.url.lower().endswith(("jpg", "png", "jpeg")):
         output.append({
-            "id": str(uuid.uuid4()),
+            "id": hashlib.md5(post.url.encode()).hexdigest(),
             "source": "https://www.reddit.com" + post.permalink,
             "link": post.url,
             "score": post.score,
