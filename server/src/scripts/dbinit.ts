@@ -20,14 +20,14 @@ createConnection({
   const phobiaRepository = getCustomRepository(PhobiaRepository);
   await Promise.all(
     data.phobias.map((phobia: { id: string; description: string }) => {
-      phobiaRepository.createPhobia(phobia.id, phobia.description).catch((error) => console.error(error));
+      phobiaRepository.createPhobia(phobia.id, phobia.description);
     }),
   );
 
   const imageRepository = getCustomRepository(ImageRepository);
   await Promise.all(
     data.images.map((image: { url: string; scariness: number; phobiaId: string }) => {
-      imageRepository.createImage(image.url, image.scariness, image.phobiaId).catch((error) => console.error(error));
+      imageRepository.createImage(image.url, image.scariness, image.phobiaId);
     }),
   );
 });

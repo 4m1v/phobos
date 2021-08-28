@@ -25,7 +25,7 @@ class AnnouncementController {
   @Post('/start')
   @OpenAPI({
     summary: '',
-    description: '',
+    description: 'Output of `Phobia[]`',
   })
   public async phobias(): Promise<Phobia[]> {
     const phobias = await this.phobiaRepository.getAll();
@@ -56,7 +56,7 @@ class AnnouncementController {
   })
   public async play(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Image> {
     sessionId;
-    const imageId = await getNextImage(sessionId);
+    const imageId = await getNextImage(sessionId, this.imageRepository);
     const image = await this.imageRepository.getById(imageId);
     return toImage(image);
   }
