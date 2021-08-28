@@ -1,5 +1,6 @@
 from praw import Reddit
 import json
+import uuid
 from dotenv import dotenv_values
 
 # Load login details
@@ -17,14 +18,17 @@ subreddit = reddit.subreddit("trypophobia")
 
 output = []
 
-for post in subreddit.hot(limit=100):
+for post in subreddit.hot(limit=150):
 # for post in subreddit.top(limit=100):
-    output.append({
-        "link": post.url,
-        "score": post.score,
-        "ratio": post.upvote_ratio,
-    })
+    if post.url.lower().endswith(("jpg", "png", "jpeg")):
+        output.append({
+            "id": str(uuid.uuid4()),
+            "source": "https://www.reddit.com" + post.permalink,
+            "link": post.url,
+            "score": post.score,
+            "ratio": post.upvote_ratio,
+        })
 
 json = json.dumps(output, indent=2)
-with open("output.txt", "a") as f:
+with open("output.json", "a") as f:
     f.write(json)
