@@ -72,6 +72,9 @@ const useStyles = makeStyles((theme: Theme) =>
       visibility: 'hidden',
       transition: 'opacity 0.75s ease-in-out, visibility 0.75s',
     },
+    barTimer: {
+      marginTop: '64px',
+    },
   }),
 );
 
@@ -176,7 +179,7 @@ const Slideshow: FC<Record<string, never>> = () => {
           {
             // Max zoom timer
             <BorderLinearProgress
-              className={clsx({
+              className={clsx(classes.barTimer, {
                 [classes.hiddenFade]: !timerStarted,
               })}
               variant="determinate"
