@@ -8,6 +8,7 @@ import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard';
 // import Phobia from '../pages/Phobia';
 import Settings from '../pages/Settings';
+import Results from '../pages/Results';
 import Slideshow from '../components/Slideshow';
 
 // interface
@@ -59,6 +60,15 @@ export const routes: Array<RouteItem> = [
     path: '/phobia/play/:sessionID',
     enabled: true,
     component: Slideshow,
+    icon: SettingsIcon,
+  },
+  {
+    key: 'router-result',
+    title: 'Results',
+    tooltip: 'Results',
+    path: '/phobia/results/:sessionID',
+    enabled: true,
+    component: Results,
     icon: SettingsIcon,
   },
 ];
