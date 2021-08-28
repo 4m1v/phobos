@@ -1,11 +1,11 @@
 import { FC, ReactElement } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Typography, makeStyles, createStyles } from '@material-ui/core';
+import { Typography, makeStyles, createStyles, Container } from '@material-ui/core';
 import { useQuery, gql } from '@apollo/client';
 
 // components
-import BodyContainer from '../components/BodyContainer';
+// import BodyContainer from '../components/BodyContainer';
 import PageTitle from '../components/PageTitle';
 
 // constants
@@ -59,7 +59,7 @@ const Phobia: FC<Record<string, never>> = (): ReactElement => {
         </title>
       </Helmet>
       <div className={classes.root}>
-        <BodyContainer>
+        <Container>
           <div className={classes.innerBody}>
             <PageTitle title={PAGE_TITLE_PHOBIA} />
             <div>
@@ -78,7 +78,7 @@ const Phobia: FC<Record<string, never>> = (): ReactElement => {
               )}
             </div>
           </div>
-        </BodyContainer>
+        </Container>
       </div>
     </>
   );

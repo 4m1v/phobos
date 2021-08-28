@@ -2,6 +2,7 @@ import React, { ChangeEvent, FC, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Slider, Typography, Checkbox, Button } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 
 // components
 import PageTitle from '../components/PageTitle';
@@ -53,6 +54,12 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
   const [sliderFearVal, setSliderFearVal] = React.useState<number[] | number>([20, 40]);
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
   const [sliderZoomVal, setSliderZoomVal] = React.useState<number[] | number>([1]);
+  const [phobiaTitle, setPhobiaTitle] = React.useState('');
+  const params: { phobia: string } = useParams();
+
+  React.useEffect(() => {
+    setPhobiaTitle(params.phobia);
+  }, []);
 
   const updatePagesRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
     setSliderPagesVal(data);
@@ -78,6 +85,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
         <div className={classes.outerBody}>
           <div className={classes.innerBody}>
             <PageTitle title={PAGE_TITLE_SETTINGS} />
+            <Typography align="center">{phobiaTitle}</Typography>
             <div>
               <Typography variant="h5"> PAGES </Typography>
               <Slider

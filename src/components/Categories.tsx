@@ -28,7 +28,7 @@ const Categories = ({ categories }: CategoriesProps): ReactElement => {
     <div className={classes.root}>
       <ReactWordcloud
         callbacks={{
-          onWordClick: (word) => history.push(`/phobia/${word.text}`),
+          onWordClick: (word: { text: any }) => history.push(`/settings/${word.text}`),
         }}
         options={{
           deterministic: true,

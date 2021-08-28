@@ -46,7 +46,7 @@ export const routes: Array<RouteItem> = [
     key: 'router-settings',
     title: 'Settings',
     tooltip: 'Settings',
-    path: '/settings',
+    path: '/settings/:phobia',
     enabled: true,
     component: Settings,
     icon: SettingsIcon,
