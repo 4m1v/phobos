@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Settings: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
-  const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>(1);
+  const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>(3);
   const [sliderFearVal, setSliderFearVal] = React.useState<number[]>([2, 4]);
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
   const [sliderZoomVal, setSliderZoomVal] = React.useState<number[] | number>([1]);

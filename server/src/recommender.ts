@@ -1,9 +1,9 @@
-import { createConnection, getCustomRepository } from "typeorm";
-import ImageEntity from "./entities/ImageEntity";
-import SessionEntity from "./entities/SessionEntity";
-import SlideEntity from "./entities/SlideEntity";
-import ImageRepository from "./repositories/ImageRepository";
-import SessionRepository from "./repositories/SessionRepository";
+import { createConnection, getCustomRepository } from 'typeorm';
+import ImageEntity from './entities/ImageEntity';
+import SessionEntity from './entities/SessionEntity';
+import SlideEntity from './entities/SlideEntity';
+import ImageRepository from './repositories/ImageRepository';
+import SessionRepository from './repositories/SessionRepository';
 
 const data: {
   sessionId: string;
@@ -49,13 +49,13 @@ interface CurrentSession {
 }
 
 let currentSession: CurrentSession = {
-  id: "really",
+  id: 'really',
   fearMin: 3,
   fearMax: 4.5,
-  phobiaId: "hi",
+  phobiaId: 'hi',
   slides: [
-    { imageId: "0", scariness: 3.2, order: 5, adjustedScariness: 3.2 },
-    { imageId: "1", scariness: 2.2, order: 1, adjustedScariness: 2.2 },
+    { imageId: '0', scariness: 3.2, order: 5, adjustedScariness: 3.2 },
+    { imageId: '1', scariness: 2.2, order: 1, adjustedScariness: 2.2 },
   ],
   predictedRatings: [],
 };
@@ -67,7 +67,7 @@ const imageList: string[] = [
 export const initRecommender = async (
   session: SessionEntity,
   imageRepository: ImageRepository,
-  sessionRepository: SessionRepository
+  sessionRepository: SessionRepository,
 ): Promise<void> => {
   currentSession = {
     id: session.id,
@@ -120,7 +120,6 @@ export const recalculatePredictedRatings = (): any => {
         sessionMod += slide.scariness * slide.scariness;
         features++;
       }
-
     });
 
     sessionMod = Math.sqrt(sessionMod);
@@ -170,7 +169,7 @@ export const getNextImage = async (sessionId: string, imageRepository: ImageRepo
     const images: ImageEntity[] = await imageRepository.findInScarinessRangeAndPhobiaId(
       currentSession.fearMin - 1,
       currentSession.fearMax + 1,
-      currentSession.phobiaId
+      currentSession.phobiaId,
     );
     const index = Math.floor(Math.random() * images.length);
     return images[index].id;
