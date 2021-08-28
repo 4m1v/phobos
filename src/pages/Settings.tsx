@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme: Theme) =>
     startButtonStyles: {
       padding: '10px 50px',
     },
+    checkBoxContainer: {
+      position: 'relative',
+      left: '-21px',
+      bottom: '5px',
+    },
   }),
 );
 
@@ -134,7 +139,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
               <Slider
                 aria-label="Fear Factor"
                 step={1}
-                color="secondary"
+                color="primary"
                 valueLabelDisplay="on"
                 min={1}
                 max={10}
@@ -145,7 +150,12 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
               <Typography variant="h5" className={classes.settingsGridLabel}>
                 Auto Zoom
               </Typography>
-              <Checkbox value={autoZoomVal} onClick={() => setAutoZoomVal(!autoZoomVal)} />
+              <Checkbox
+                className={classes.checkBoxContainer}
+                value={autoZoomVal}
+                disabled
+                onClick={() => setAutoZoomVal(!autoZoomVal)}
+              />
               {autoZoomVal && (
                 <>
                   <Typography
