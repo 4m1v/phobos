@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Slider, Typography, Checkbox, Button } from '@material-ui/core';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 // components
 import PageTitle from '../components/PageTitle';
@@ -49,7 +49,7 @@ const useStyles = makeStyles(() =>
 
 const Settings: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
-
+  const history = useHistory();
   const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>([1]);
   const [sliderFearVal, setSliderFearVal] = React.useState<number[] | number>([20, 40]);
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
@@ -72,6 +72,11 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
   const updateZoomRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
     setSliderZoomVal(data);
     console.log(data);
+  };
+
+  const playPhobia = () => {
+    // Some promises here.
+    history.push('/phobia/play/23213123');
   };
 
   return (
@@ -134,7 +139,13 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
             </div>
           </div>
           <div className={classes.startButtonContainer}>
-            <Button className={classes.startButtonStyles} variant="contained" color="primary" size="large">
+            <Button
+              className={classes.startButtonStyles}
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={playPhobia}
+            >
               Start
             </Button>
           </div>
