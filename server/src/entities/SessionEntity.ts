@@ -23,13 +23,13 @@ class SessionEntity {
   public fearMax: number;
 
   @Column({ nullable: false })
-  public phobia_id: string;
+  public phobiaId: string;
 
   @ManyToOne(() => PhobiaEntity, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'phobia_id' })
+  @JoinColumn({ name: 'phobiaId' })
   public phobia: PhobiaEntity;
 
-  @OneToMany(() => SlideEntity, (item) => item.session_id)
+  @OneToMany(() => SlideEntity, (item) => item.sessionId)
   @JoinColumn()
   public slides: SlideEntity[];
 

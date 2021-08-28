@@ -24,10 +24,10 @@ class ImageEntity {
   public scariness: number;
 
   @Column({ nullable: false })
-  public phobia_id: string;
+  public phobiaId: string;
 
   @ManyToOne(() => PhobiaEntity, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'phobia_id' })
+  @JoinColumn({ name: 'phobiaId' })
   public phobia: PhobiaEntity;
 
   @CreateDateColumn({ type: 'datetime', default: () => "DATETIME('now')" })

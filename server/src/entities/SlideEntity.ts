@@ -22,17 +22,17 @@ class SlideEntity {
   public scariness: number;
 
   @Column({ nullable: false })
-  public image_id: string;
+  public imageId: string;
 
   @Column({ nullable: false })
-  public session_id: string;
+  public sessionId: string;
 
   @ManyToOne(() => ImageEntity, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'image_id' })
+  @JoinColumn({ name: 'imageId' })
   public image: ImageEntity;
 
   @ManyToOne(() => SessionEntity, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'session_id' })
+  @JoinColumn({ name: 'sessionId' })
   public session: SessionEntity;
 
   @CreateDateColumn({ type: 'datetime', default: () => "DATETIME('now')" })

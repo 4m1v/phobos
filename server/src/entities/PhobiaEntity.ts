@@ -9,7 +9,7 @@ class PhobiaEntity {
   @Column({ nullable: false })
   public seen: number;
 
-  @OneToMany(() => ImageEntity, (item) => item.phobia_id)
+  @OneToMany(() => ImageEntity, (item) => item.phobiaId)
   @JoinColumn()
   public images: ImageEntity[];
 
