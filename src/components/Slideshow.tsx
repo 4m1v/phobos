@@ -1,36 +1,16 @@
-import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 import clsx from 'clsx';
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Button,
-  Slider,
-  Typography,
-  Dialog,
-  DialogActions,
-  DialogContentText,
-  DialogContent,
-  DialogTitle,
-} from '@material-ui/core';
+import { makeStyles, createStyles, Theme, Slider, Typography } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import useCountDown from 'react-countdown-hook';
-import BorderLinearProgress from './BorderLinearProgress';
 
 // constants
 import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
 import SlideshowDialog from './SlideshowDialog';
 
 import { playRequest, feedbackRequest } from '../utils/requests';
-
-interface SlideshowProps {
-  tmp: string;
-}
-
-/*
-Take in a correctly ordered array of images with their links and ids, and an auto zoom setting (which should be modifiable here)
-*/
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
@@ -39,8 +19,22 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100vh',
       background: theme.palette.background.paper,
     },
-    roundUi: {
+    hudTop: {
       // position: 'fixed',
+    },
+    hudBottom: {
+      position: 'fixed',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      bottom: 0,
+      padding: theme.spacing(1),
+      paddingBottom: theme.spacing(4),
+      width: '100%',
+    },
+    zoomSlider: {
+      maxWidth: theme.spacing(70),
+      marginLeft: theme.spacing(5),
     },
     roundHeader: {
       // display: 'flex',
@@ -52,28 +46,19 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      width: '100%',
-      height: '77vh',
+      width: '100vw',
+      height: '85vh',
+      marginTop: theme.spacing(1),
     },
     mediaInnerContainer: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     },
-    slideBarContainer: {
-      display: 'flex',
-      justifyContent: 'center',
-      width: '100%',
-      padding: '0 35%',
-      paddingTop: '20px',
-    },
     hiddenFade: {
       opacity: 0,
       visibility: 'hidden',
       transition: 'opacity 0.75s ease-in-out, visibility 0.75s',
-    },
-    barTimer: {
-      marginTop: '64px',
     },
   }),
 );
@@ -81,6 +66,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Slideshow: FC<Record<string, never>> = () => {
   const classes = useStyles();
   const history = useHistory();
+  const theme = useTheme();
   const zoomIncrement = 50;
   const [zoom, setZoom] = useState<number>(ZOOM_MIN);
   const [mediaContSize, setMediaContSize] = useState(10);
@@ -89,9 +75,8 @@ const Slideshow: FC<Record<string, never>> = () => {
 
   const [barTimer, setBarTimer] = useState<number>(0);
   const [timerStarted, setTimerStarted] = useState<boolean>(false);
-  const initialTime = 5000;
-  const interval = 100;
-  // Set the media container size according to zoom
+  const initialTime = 3000;
+  const interval = 50;
   const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -118,7 +103,6 @@ const Slideshow: FC<Record<string, never>> = () => {
     resetZoom();
   }, [pageCurr]);
 
-  // const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {
     setMediaContSize(100 * (zoom / ZOOM_MAX));
     if (zoom === ZOOM_MAX) {
@@ -172,22 +156,13 @@ const Slideshow: FC<Record<string, never>> = () => {
           history.push(`/phobia/results/${params.sessionID}`);
         }}
       />
-      <div className={classes.roundUi}>
+
+      <div className={classes.hudTop}>
         <div className={classes.roundHeader}>
-          {/* <Button variant="contained">Back</Button> */}
-          {
-            // Max zoom timer
-            <BorderLinearProgress
-              className={clsx(classes.barTimer, {
-                [classes.hiddenFade]: !timerStarted,
-              })}
-              variant="determinate"
-              value={barTimer}
-            />
-          }
-          {/* <Button variant="contained">Help</Button> */}
+          {/* <Button variant="contained">Help</Button> info about the image, source */}
         </div>
       </div>
+
       <div className={classes.mediaContainer}>
         <div
           className={classes.mediaInnerContainer}
@@ -196,41 +171,56 @@ const Slideshow: FC<Record<string, never>> = () => {
             height: `${mediaContSize}%`,
           }}
         >
-          <img
-            src={imageUrl}
-            // src="https://www.abc.net.au/cm/rimage/12555382-1x1-xlarge.jpg?v=2" // square
-            // src="https://images.pexels.com/photos/255419/pexels-photo-255419.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" // wide
-            // src="http://wvs.topleftpixel.com/photos/scotia_plaza_tall_stitched.jpg" // tall
-            // src="https://i.pinimg.com/originals/6d/c2/1b/6dc21b2e583b755504a37c0bded0b54a.gif" // gif
-            alt="Something"
-            ref={media}
-            style={{
-              width: mediaHundredWidth ? '100%' : 'auto',
-              height: mediaHundredWidth ? 'auto' : '100%',
-            }}
-          />
+          {imageUrl && (
+            <img
+              src={imageUrl}
+              // src="https://www.abc.net.au/cm/rimage/12555382-1x1-xlarge.jpg?v=2" // square
+              // src="https://images.pexels.com/photos/255419/pexels-photo-255419.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" // wide
+              // src="http://wvs.topleftpixel.com/photos/scotia_plaza_tall_stitched.jpg" // tall
+              // src="https://i.pinimg.com/originals/6d/c2/1b/6dc21b2e583b755504a37c0bded0b54a.gif" // gif
+              alt="Something"
+              ref={media}
+              style={{
+                width: mediaHundredWidth ? '100%' : 'auto',
+                height: mediaHundredWidth ? 'auto' : '100%',
+                borderWidth: `${timerStarted ? '5px' : '0px'}`,
+                borderStyle: 'solid',
+                borderImage: `conic-gradient(
+                ${theme.palette.primary.main},
+                ${theme.palette.primary.main} ${barTimer}%,
+                ${theme.palette.background.paper} ${barTimer + 0.5}%,
+                ${theme.palette.background.paper}
+              ) 1`,
+              }}
+            />
+          )}
         </div>
       </div>
-      <div className={classes.slideBarContainer}>
-        {
-          // Image number
-        }
+
+      <div className={classes.hudBottom}>
+        <Typography variant="h6">
+          {pageCurr} / {pageMax}
+        </Typography>
         <Slider
           value={zoom}
           step={zoomIncrement}
+          valueLabelDisplay="on"
+          valueLabelFormat={(value) => <div>🖐️</div>}
           min={ZOOM_MIN}
           max={ZOOM_MAX}
+          marks={[
+            {
+              value: ZOOM_MAX,
+              label: '🏁',
+            },
+          ]}
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(event, newValue: any) => {
             setZoom(newValue);
           }}
+          className={classes.zoomSlider}
         />
       </div>
-      <Typography align="center" variant="h5">
-        Face your fears
-      </Typography>
-      {/* <Button variant="contained">Auto</Button> */}
-      {pageCurr}/{pageMax}
     </main>
   );
 };
