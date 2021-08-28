@@ -15,14 +15,38 @@ export const DRAWER_WIDTH = 250;
 
 // PHOBIA
 export const PHOBIAS = [
-  'acrophobia',
-  'anthophobia',
-  'arachnophobia',
-  'chronomentrophobia',
-  'dendrophobia',
-  'herpetophobia',
-  'thalassophobia',
-  'trypophobia',
+  {
+    id: 'acrophobia',
+    description: 'fear of heights',
+  },
+  {
+    id: 'anthophobia',
+    description: 'fear of flowers',
+  },
+  {
+    id: 'arachnophobia',
+    description: 'fear of spiders',
+  },
+  {
+    id: 'chronomentrophobia',
+    description: 'fear of clocks',
+  },
+  {
+    id: 'dendrophobia',
+    description: 'fear of trees',
+  },
+  {
+    id: 'herpetophobia',
+    description: 'fear of reptiles',
+  },
+  {
+    id: 'thalassophobia',
+    description: 'fear of the ocean',
+  },
+  {
+    id: 'trypophobia',
+    description: 'fear of closely-packed holes',
+  },
 ];
 
 // ZOOM
