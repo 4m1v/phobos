@@ -10,7 +10,7 @@ import Layout from './components/Layout';
 import { lightTheme, darkTheme } from './theme/appTheme';
 
 // app routes
-import { routes } from './config/routes';
+import routes from './config/routes';
 
 // constants
 import { APP_TITLE } from './utils/constants';

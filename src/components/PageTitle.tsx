@@ -3,9 +3,7 @@ import { createStyles, makeStyles, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() =>
   createStyles({
-    title: {
-      textTransform: 'uppercase',
-    },
+    title: {},
   }),
 );
 
