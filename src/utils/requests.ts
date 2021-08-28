@@ -42,10 +42,6 @@ const request = (method: Method, url: string, body: any = {}): Promise<any> => {
     });
 };
 
-export const phobiasRequest = (): Promise<Phobia[]> => {
-  return request('GET', `${config.url}/api/phobias`);
-};
-
 export const startRequest = (fearMin: number, fearMax: number, phobiaId: string): Promise<{ sessionId: string }> => {
   return request('POST', `${config.url}/api/start`, {
     fearMin,

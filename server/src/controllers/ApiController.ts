@@ -21,16 +21,6 @@ class AnnouncementController {
   @InjectRepository()
   private readonly slideRepository: SlideRepository;
 
-  @Get('/phobias')
-  @OpenAPI({
-    summary: 'Gets all the phobias served by this app.',
-    description: 'Output of `Phobia[]`',
-  })
-  public async phobias(): Promise<Phobia[]> {
-    const phobias = await this.phobiaRepository.getAll();
-    return toPhobias(phobias);
-  }
-
   @Post('/start')
   @OpenAPI({
     summary: 'Called at the start of a session to create a session.',
