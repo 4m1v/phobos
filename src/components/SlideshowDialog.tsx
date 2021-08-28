@@ -47,6 +47,10 @@ const useStyles = makeStyles((theme: Theme) =>
     hidden: {
       display: 'none',
     },
+    slider: {
+      width: '400px',
+      margin: '0 auto',
+    },
   }),
 );
 
@@ -67,25 +71,24 @@ const SlideshowDialog: FC<SlideshowDialogProps> = ({ open, isLast, handleClose, 
 
   return (
     <>
-      {/* <div className={clsx(classes.root, { [classes.hidden]: !open })}> */}
-      <Dialog open={open}>
+      <Dialog open={open} className={classes.root} maxWidth="sm" fullWidth>
         <DialogTitle>Well Done!</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            How daskjdnkasjdnkasjndkajsndkajsndkajsndkasjndkasndkajsndkajsndkasid you do?
-          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">How did you do?</DialogContentText>
+          <div className={classes.slider}>
+            <Slider
+              step={1}
+              color="primary"
+              valueLabelDisplay="auto"
+              min={1}
+              max={10}
+              value={scarinessVal}
+              onChange={updateScariness}
+              marks={FEARFACTORMARKS}
+            />
+          </div>
         </DialogContent>
         <DialogActions>
-          <Slider
-            step={1}
-            color="primary"
-            valueLabelDisplay="auto"
-            min={1}
-            max={10}
-            value={scarinessVal}
-            onChange={updateScariness}
-            marks={FEARFACTORMARKS}
-          />
           <Button
             onClick={() => {
               handleClose();
@@ -98,7 +101,6 @@ const SlideshowDialog: FC<SlideshowDialogProps> = ({ open, isLast, handleClose, 
           </Button>
         </DialogActions>
       </Dialog>
-      {/* </div> */}
     </>
   );
 };
