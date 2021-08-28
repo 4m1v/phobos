@@ -10,7 +10,7 @@ import { initRecommender, getNextImage, addFeedbackToRecommender, recalculatePre
 
 import type { Image, Phobia, Session } from '../../../src/api';
 
-@JsonController("/api")
+@JsonController('/api')
 class AnnouncementController {
   @InjectRepository()
   private readonly imageRepository: ImageRepository;
@@ -23,7 +23,7 @@ class AnnouncementController {
 
   @Get('/phobias')
   @OpenAPI({
-    summary: '',
+    summary: 'Gets all the phobias served by this app.',
     description: 'Output of `Phobia[]`',
   })
   public async phobias(): Promise<Phobia[]> {
@@ -33,46 +33,37 @@ class AnnouncementController {
 
   @Post('/start')
   @OpenAPI({
-    summary: "Called at the star of a session to create a session.",
-    description: "Output of `{ sessionId: string }`",
+    summary: 'Called at the start of a session to create a session.',
+    description: 'Output of `{ sessionId: string }`',
   })
   public async start(
-    @BodyParam("fearMin", { required: true }) fearMin: number,
-    @BodyParam("fearMax", { required: true }) fearMax: number,
-    @BodyParam("phobiaId", { required: true }) phobiaId: string
+    @BodyParam('fearMin', { required: true }) fearMin: number,
+    @BodyParam('fearMax', { required: true }) fearMax: number,
+    @BodyParam('phobiaId', { required: true }) phobiaId: string,
   ): Promise<{ sessionId: string }> {
     const session = await this.sessionRepository.createSession(fearMin, fearMax, phobiaId);
-    await initRecommender(session);
+    await initRecommender(session, this.imageRepository, this.sessionRepository);
     return {
       sessionId: session.id,
     };
   }
 
-  @Post("/test")
+  @Post('/play')
   @OpenAPI({
-    summary: "Called at the star of a session to create a session.",
-    description: "Output of `{ sessionId: string }`",
+    summary: 'Called at the start of reviewing an image to get the image.',
+    description: 'Output of `Image` defined in api.ts',
   })
-  public async test(): Promise<any> {
-    return { result: recalculatePredictedRatings() };
-  }
-
-  @Post("/play")
-  @OpenAPI({
-    summary: "Called at the start of reviewing an image to get the image.",
-    description: "Output of `Image` defined in api.ts",
-  })
-  public async play(@BodyParam("sessionId", { required: true }) sessionId: string): Promise<Image> {
+  public async play(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Image> {
     sessionId;
     const imageId = await getNextImage(sessionId);
     const image = await this.imageRepository.getById(imageId);
     return toImage(image);
   }
 
-  @Post("/feedback")
+  @Post('/feedback')
   @OpenAPI({
-    summary: "Called at the end of reviewing an image to record how a user responded.",
-    description: "Output of `{}`",
+    summary: 'Called at the end of reviewing an image to record how a user responded.',
+    description: 'Output of `{}`',
   })
   public async feedback(
     @BodyParam('imageId', { required: true }) imageId: string,
@@ -86,12 +77,12 @@ class AnnouncementController {
     return {};
   }
 
-  @Post("/result")
+  @Post('/result')
   @OpenAPI({
-    summary: "Called at the end of a session to review how the user went. ",
-    description: "Output of `Session` defined in api.ts",
+    summary: 'Called at the end of a session to review how the user went. ',
+    description: 'Output of `Session` defined in api.ts',
   })
-  public async result(@BodyParam("sessionId", { required: true }) sessionId: string): Promise<Session> {
+  public async result(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Session> {
     const session = await this.sessionRepository.getByIdWithSlides(sessionId);
     return toSession(session);
   }
