@@ -23,7 +23,7 @@ import { useLocation } from 'react-router-dom';
 import MenuItem from './MenuItem';
 
 // app routes
-import { routes } from '../config/routes';
+import routes from '../config/routes';
 
 // interfaces
 import RouteItem from '../model/RouteItem.model';
