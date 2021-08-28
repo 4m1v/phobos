@@ -14,9 +14,9 @@ class SlideRepository extends Repository<SlideEntity> {
     });
   }
 
-  public async createSlide(order: number, scariness: number, imageId: string, sessionId: string): Promise<void> {
+  public async createSlide(order: number, scariness: number, imageId: string, sessionId: string): Promise<SlideEntity> {
     const result = this.create({ order, scariness, imageId, sessionId });
-    await this.save(result);
+    return this.save(result);
   }
 }
 

@@ -1,12 +1,12 @@
 import { BodyParam, Post, JsonController } from 'routing-controllers';
 import { OpenAPI } from 'routing-controllers-openapi';
-import { toSession } from '../json';
+import { toImage, toSession } from '../json';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import ImageRepository from '../repositories/ImageRepository';
 // import PhobiaRepository from '../repositories/PhobiaRepository';
 import SessionRepository from '../repositories/SessionRepository';
 import SlideRepository from '../repositories/SlideRepository';
-import {} from '../recommender';
+import { initRecommender, getNextImage, addFeedbackToRecommender } from '../recommender';
 
 import type { Image, Session } from '../../../src/api';
 
@@ -31,9 +31,10 @@ class AnnouncementController {
     @BodyParam('fearMax', { required: true }) fearMax: number,
     @BodyParam('phobiaId', { required: true }) phobiaId: string,
   ): Promise<{ sessionId: string }> {
-    const sessionId = await this.sessionRepository.createSession(fearMin, fearMax, phobiaId);
+    const session = await this.sessionRepository.createSession(fearMin, fearMax, phobiaId);
+    initRecommender(session);
     return {
-      sessionId,
+      sessionId: session.id,
     };
   }
 
@@ -42,9 +43,11 @@ class AnnouncementController {
     summary: 'Called at the start of reviewing an image to get the image.',
     description: 'Output of `Image` defined in api.ts',
   })
-  public play(@BodyParam('sessionId', { required: true }) sessionId: number): Promise<Image> {
+  public async play(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Image> {
     sessionId;
-    return this.imageRepository.getHardcoded();
+    const imageId = await getNextImage(sessionId);
+    const image = await this.imageRepository.getById(imageId);
+    return toImage(image);
   }
 
   @Post('/feedback')
@@ -58,8 +61,9 @@ class AnnouncementController {
     @BodyParam('scariness', { required: true }) scariness: number,
   ): Promise<void> {
     const slideLen = await this.sessionRepository.getSlideLenById(sessionId);
-    await this.slideRepository.createSlide(slideLen, scariness, imageId, sessionId);
+    const slide = await this.slideRepository.createSlide(slideLen, scariness, imageId, sessionId);
     await this.sessionRepository.editSlideLenById(sessionId, slideLen + 1);
+    addFeedbackToRecommender(sessionId, slide);
   }
 
   @Post('/result')

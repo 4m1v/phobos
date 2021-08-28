@@ -31,10 +31,9 @@ class SessionRepository extends Repository<SessionEntity> {
     });
   }
 
-  public async createSession(fearMin: number, fearMax: number, phobiaId: string): Promise<string> {
+  public createSession(fearMin: number, fearMax: number, phobiaId: string): Promise<SessionEntity> {
     const result = this.create({ fearMin, fearMax, phobiaId });
-    const { id } = await this.save(result);
-    return id;
+    return this.save(result);
   }
 
   public getSlideLenById(id: string): Promise<number> {
