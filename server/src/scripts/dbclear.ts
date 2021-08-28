@@ -11,12 +11,11 @@ createConnection({
   database: process.env.DB,
   entities: [__dirname + '../../entities/*.ts'],
 }).then(async (connection) => {
-  await connection.query('PRAGMA foreign_keys=OFF');
   await connection.synchronize();
+
   const entities = connection.entityMetadatas;
   for (const entity of entities) {
     const repository = connection.getRepository(entity.name);
     await repository.clear();
   }
-  await connection.query('PRAGMA foreign_keys=ON');
 });

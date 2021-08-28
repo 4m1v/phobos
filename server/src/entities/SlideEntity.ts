@@ -24,25 +24,21 @@ class SlideEntity {
   @Column({ nullable: false })
   public imageId: string;
 
-  @Column({ nullable: false })
-  public sessionId: string;
-
   @ManyToOne(() => ImageEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'imageId' })
   public image: ImageEntity;
+
+  @Column({ nullable: false })
+  public sessionId: string;
 
   @ManyToOne(() => SessionEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'sessionId' })
   public session: SessionEntity;
 
-  @CreateDateColumn({ type: 'datetime', default: () => "DATETIME('now')" })
+  @CreateDateColumn()
   public createdAt: Date;
 
-  @UpdateDateColumn({
-    type: 'datetime',
-    default: () => "DATETIME('now')",
-    onUpdate: "DATETIME('now')",
-  })
+  @UpdateDateColumn()
   public updatedAt: Date;
 }
 
