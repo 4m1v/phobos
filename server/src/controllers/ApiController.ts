@@ -45,6 +45,7 @@ class AnnouncementController {
   })
   public async play(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Image> {
     const imageId = await getNextImage(sessionId, this.imageRepository);
+    console.log(imageId);
     const image = await this.imageRepository.getById(imageId);
     return toImage(image);
   }

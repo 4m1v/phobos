@@ -101,7 +101,6 @@ export const initRecommender = async (
 export const recalculatePredictedRatings = (): any => {
   const viewed: { [x: string]: number } = {};
   let currentSeshMod = 0;
-
   // Get what images the current session has viewed, represented in a different way.
   currentSession.slides.forEach((slide: any) => {
     viewed[slide.imageId] = slide.scariness;
@@ -149,6 +148,7 @@ export const recalculatePredictedRatings = (): any => {
       }
     });
   });
+  // console.log(currentSession.predictedRatings);
 
   // Storing calculated predictions into the currentSession
   for (const key in predictions) {
@@ -160,15 +160,16 @@ export const recalculatePredictedRatings = (): any => {
     }
   }
 
+  // console.log(currentSession.predictedRatings);
   return currentSession.predictedRatings;
 };
 
 export const getNextImage = async (sessionId: string, imageRepository: ImageRepository): Promise<string> => {
-  if (currentSession.slides.length < Number.POSITIVE_INFINITY) {
+  if (currentSession.slides.length < 4) {
     // Give them a random easy image.
     const images: ImageEntity[] = await imageRepository.findInScarinessRangeAndPhobiaId(
-      currentSession.fearMin - 0.5,
-      currentSession.fearMin + 0.5,
+      currentSession.fearMin - 1,
+      currentSession.fearMax + 1,
       currentSession.phobiaId
     );
     const index = Math.floor(Math.random() * images.length);
@@ -181,7 +182,6 @@ export const getNextImage = async (sessionId: string, imageRepository: ImageRepo
   // Choose top 1
   currentSession.predictedRatings.sort((a: any, b: any) => b.scariness - a.scariness);
   const image = currentSession.predictedRatings[0];
-
   // Return it
   return image.imageId;
 };
