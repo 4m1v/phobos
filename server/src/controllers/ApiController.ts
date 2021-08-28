@@ -3,7 +3,7 @@ import { OpenAPI } from 'routing-controllers-openapi';
 import { toSession } from '../json';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import ImageRepository from '../repositories/ImageRepository';
-import PhobiaRepository from '../repositories/PhobiaRepository';
+// import PhobiaRepository from '../repositories/PhobiaRepository';
 import SessionRepository from '../repositories/SessionRepository';
 import SlideRepository from '../repositories/SlideRepository';
 
@@ -13,8 +13,8 @@ import type { Image, Session } from '../../../src/api';
 class AnnouncementController {
   @InjectRepository()
   private readonly imageRepository: ImageRepository;
-  @InjectRepository()
-  private readonly phobiaRepository: PhobiaRepository;
+  // @InjectRepository()
+  // private readonly phobiaRepository: PhobiaRepository;
   @InjectRepository()
   private readonly sessionRepository: SessionRepository;
   @InjectRepository()
@@ -22,8 +22,8 @@ class AnnouncementController {
 
   @Post('/start')
   @OpenAPI({
-    summary: '',
-    description: 'Output of ``',
+    summary: 'Called at the star of a session to create a session.',
+    description: 'Output of `{ sessionId: string }`',
   })
   public async start(
     @BodyParam('fearMin', { required: true }) fearMin: number,
@@ -38,18 +38,18 @@ class AnnouncementController {
 
   @Post('/image')
   @OpenAPI({
-    summary: '',
-    description: 'Output of ``',
+    summary: 'Called at the start of reviewing an image to get the image.',
+    description: 'Output of `Image` defined in api.ts',
   })
   public image(@BodyParam('sessionId', { required: true }) sessionId: number): Promise<Image> {
     sessionId;
-    return null;
+    return this.imageRepository.getHardcoded();
   }
 
   @Post('/feedback')
   @OpenAPI({
-    summary: '',
-    description: 'Output of ``',
+    summary: 'Called at the end of reviewing an image to record how a user responded.',
+    description: 'Output of `{}`',
   })
   public async feedback(
     @BodyParam('imageId', { required: true }) imageId: string,
@@ -63,8 +63,8 @@ class AnnouncementController {
 
   @Post('/result')
   @OpenAPI({
-    summary: '',
-    description: 'Output of ``',
+    summary: 'Called at the end of a session to review how the user went. ',
+    description: 'Output of `Session` defined in api.ts',
   })
   public async result(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Session> {
     const session = await this.sessionRepository.getByIdWithSlides(sessionId);
