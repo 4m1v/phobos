@@ -91,14 +91,26 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
+
   const params: { sessionID: string } = useParams();
 
-  React.useEffect(() => {
-    console.log(params);
+  // Slideshow state
+  const sessionPageMax = sessionStorage.getItem('pageMax');
+  const [pageMax, setPageMax] = useState(sessionPageMax ? JSON.parse(sessionPageMax) : 1);
+  const [pageCurr, setPageCurr] = useState(1);
+  const [imageUrl, setImageUrl] = useState('');
+
+  const resetZoom = () => {
+    setZoom(ZOOM_MIN);
+  };
+
+  useEffect(() => {
     playRequest(params.sessionID).then((info) => {
       console.log(info);
+      setImageUrl(info.url);
     });
-  }, []);
+    resetZoom();
+  }, [pageCurr]);
 
   // const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {
@@ -124,7 +136,6 @@ const Slideshow: FC<Record<string, never>> = () => {
   useEffect(() => {
     if (timerStarted && barTimer === 100) {
       setDialogOpen(true);
-      console.log('HABUDSHBJAHBDJHBASJHABSJHBDS');
     }
   }, [barTimer, timerStarted]);
 
@@ -141,10 +152,10 @@ const Slideshow: FC<Record<string, never>> = () => {
       {/* TODO Change isLast */}
       <SlideshowDialog
         open={dialogOpen}
-        isLast={false}
+        isLast={pageMax == pageCurr}
         handleClose={() => setDialogOpen(false)}
         onNext={() => {
-          console.log('Do next page');
+          setPageCurr(Math.min(pageCurr + 1, pageMax));
         }}
       />
       <div className={classes.roundUi}>
@@ -172,7 +183,8 @@ const Slideshow: FC<Record<string, never>> = () => {
           }}
         >
           <img
-            src="https://www.abc.net.au/cm/rimage/12555382-1x1-xlarge.jpg?v=2" // square
+            src={imageUrl}
+            // src="https://www.abc.net.au/cm/rimage/12555382-1x1-xlarge.jpg?v=2" // square
             // src="https://images.pexels.com/photos/255419/pexels-photo-255419.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" // wide
             // src="http://wvs.topleftpixel.com/photos/scotia_plaza_tall_stitched.jpg" // tall
             // src="https://i.pinimg.com/originals/6d/c2/1b/6dc21b2e583b755504a37c0bded0b54a.gif" // gif
@@ -204,6 +216,7 @@ const Slideshow: FC<Record<string, never>> = () => {
         Face your fears
       </Typography>
       {/* <Button variant="contained">Auto</Button> */}
+      {pageCurr}/{pageMax}
     </main>
   );
 };

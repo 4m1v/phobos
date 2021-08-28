@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Settings: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
-  const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>([1]);
+  const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>(1);
   const [sliderFearVal, setSliderFearVal] = React.useState<number[]>([2, 4]);
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
   const [sliderZoomVal, setSliderZoomVal] = React.useState<number[] | number>([1]);
@@ -95,6 +95,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
       .catch((err) => {
         console.log(err);
       });
+    sessionStorage.setItem('pageMax', JSON.stringify(sliderPagesVal));
   };
 
   const capitalise = (str: string) => {

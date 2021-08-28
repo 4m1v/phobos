@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100%',
       width: '100%',
       backdropFilter: 'blur(8px)',
-      backgroundColor: '#00000080', // dark grey
+      // backgroundColor: '#00000080', // dark grey
       zIndex: 99999,
     },
     hidden: {
