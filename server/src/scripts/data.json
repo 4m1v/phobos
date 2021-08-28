@@ -493,6 +493,96 @@
       "url": "https://i.redd.it/tpq2t6gyvp771.jpg",
       "scariness": 8,
       "phobiaId": "trypophobia"
+    },
+    {
+      "url": "https://i.redd.it/owwqw9ecuda21.jpg",
+      "scariness": 8,
+      "phobiaId": "acrophobia"
+    },
+    {
+      "url": "https://i.redd.it/f7gbyhflej821.jpg",
+      "scariness": 9,
+      "phobiaId": "acrophobia"
+    },
+    {
+      "url": "https://i.redd.it/4hq8aj60npl51.jpg",
+      "scariness": 5,
+      "phobiaId": "acrophobia"
+    },
+    {
+      "url": "https://i.redd.it/10wvxrqib3d01.jpg",
+      "scariness": 9,
+      "phobiaId": "anthophobia"
+    },
+    {
+      "url": "https://www.sydneymarkets.com.au/images/flowers/_DSC3500_small-01-01.png",
+      "scariness": 7,
+      "phobiaId": "anthophobia"
+    },
+    {
+      "url": "https://cdn.britannica.com/88/194588-050-967E8D17/flowers.jpg",
+      "scariness": 7,
+      "phobiaId": "anthophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "arachnophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "arachnophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "arachnophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "chronomentrophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "chronomentrophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "chronomentrophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "herpetophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "herpetophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "herpetophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "thalassophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "thalassophobia"
+    },
+    {
+      "url": "",
+      "scariness": 0,
+      "phobiaId": "thalassophobia"
     }
   ]
 }
