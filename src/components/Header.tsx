@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography, IconButton, Tooltip, createStyles, makeSty
 import MenuIcon from '@material-ui/icons/Menu';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
+import { useHistory } from 'react-router-dom';
 
 // constants
 import { APP_TITLE, DRAWER_WIDTH } from '../utils/constants';
@@ -19,8 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     appBarShift: {
-      marginLeft: DRAWER_WIDTH,
-      width: `calc(100% - ${DRAWER_WIDTH}px)`,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -57,6 +56,10 @@ interface HeaderProps {
 
 const Header = ({ open, handleMenuOpen, toggleTheme, useDefaultTheme }: HeaderProps): ReactElement => {
   const classes = useStyles();
+  const history = useHistory();
+  const goHome = () => {
+    history.push('/');
+  };
   return (
     <AppBar
       position="fixed"
@@ -66,20 +69,8 @@ const Header = ({ open, handleMenuOpen, toggleTheme, useDefaultTheme }: HeaderPr
       })}
     >
       <Toolbar className={classes.toolbar}>
-        <div className={classes.title}>
-          <IconButton
-            color="inherit"
-            aria-label="open menu"
-            onClick={handleMenuOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-            size="small"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
+        <div className={classes.title} style={{ cursor: 'pointer' }}>
+          <Typography variant="h6" noWrap onClick={goHome}>
             {APP_TITLE}
           </Typography>
         </div>
