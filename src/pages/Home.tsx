@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
-import { CircularProgress, Theme, Typography, makeStyles, createStyles } from '@material-ui/core';
+import { Theme, Typography, makeStyles, createStyles } from '@material-ui/core';
 
 // components
 import Categories from '../components/Categories';
@@ -59,7 +59,7 @@ const Home: FC<Record<string, never>> = (): ReactElement => {
             We&apos;ll show you some very mild images and let you slowly zoom 🔍 so you can face your fears at a pace
             you feel comfortable with 🧸.
           </Typography>
-          {PHOBIAS ? <Categories categories={PHOBIAS} /> : <CircularProgress />}
+          <Categories categories={PHOBIAS} />
         </div>
       </div>
     </>
