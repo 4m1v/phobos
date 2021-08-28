@@ -22,7 +22,7 @@ import BorderLinearProgress from './BorderLinearProgress';
 import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
 import SlideshowDialog from './SlideshowDialog';
 
-import { playRequest } from '../utils/requests';
+import { playRequest, feedbackRequest } from '../utils/requests';
 
 interface SlideshowProps {
   tmp: string;
@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Slideshow: FC<Record<string, never>> = () => {
   const classes = useStyles();
+  const history = useHistory();
   const zoomIncrement = 50;
   const [zoom, setZoom] = useState<number>(ZOOM_MIN);
   const [mediaContSize, setMediaContSize] = useState(10);
@@ -91,6 +92,7 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [scariness, setScariness] = React.useState<number>(1);
 
   const params: { sessionID: string } = useParams();
 
@@ -99,6 +101,7 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [pageMax, setPageMax] = useState(sessionPageMax ? JSON.parse(sessionPageMax) : 1);
   const [pageCurr, setPageCurr] = useState(1);
   const [imageUrl, setImageUrl] = useState('');
+  const [imageId, setImageId] = useState('');
 
   const resetZoom = () => {
     setZoom(ZOOM_MIN);
@@ -108,6 +111,7 @@ const Slideshow: FC<Record<string, never>> = () => {
     playRequest(params.sessionID).then((info) => {
       console.log(info);
       setImageUrl(info.url);
+      setImageId(info.id);
     });
     resetZoom();
   }, [pageCurr]);
@@ -153,9 +157,17 @@ const Slideshow: FC<Record<string, never>> = () => {
       <SlideshowDialog
         open={dialogOpen}
         isLast={pageMax == pageCurr}
+        scariness={scariness}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        setScariness={(n: any) => setScariness(n)}
         handleClose={() => setDialogOpen(false)}
         onNext={() => {
+          feedbackRequest(imageId, params.sessionID, scariness).catch((e) => console.log(e));
           setPageCurr(Math.min(pageCurr + 1, pageMax));
+        }}
+        onFinish={() => {
+          feedbackRequest(imageId, params.sessionID, scariness).catch((e) => console.log(e));
+          history.push(`/phobia/results/${params.sessionID}`);
         }}
       />
       <div className={classes.roundUi}>
