@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+
 import clsx from 'clsx';
 import {
   makeStyles,
@@ -20,6 +21,8 @@ import BorderLinearProgress from './BorderLinearProgress';
 // constants
 import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
 import SlideshowDialog from './SlideshowDialog';
+
+import { playRequest } from '../utils/requests';
 
 interface SlideshowProps {
   tmp: string;
@@ -88,6 +91,14 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const params: { sessionID: string } = useParams();
+
+  React.useEffect(() => {
+    console.log(params);
+    playRequest(params.sessionID).then((info) => {
+      console.log(info);
+    });
+  }, []);
 
   // const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {

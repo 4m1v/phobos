@@ -90,7 +90,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
     startRequest(sliderFearVal[0], sliderFearVal[1], phobiaTitle)
       .then((dataID) => {
         console.log(dataID);
-        history.push('/phobia/play/23213123');
+        history.push(`/phobia/play/${dataID.sessionId}`);
       })
       .catch((err) => {
         console.log(err);
