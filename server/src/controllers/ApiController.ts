@@ -36,12 +36,12 @@ class AnnouncementController {
     };
   }
 
-  @Post('/image')
+  @Post('/play')
   @OpenAPI({
     summary: 'Called at the start of reviewing an image to get the image.',
     description: 'Output of `Image` defined in api.ts',
   })
-  public image(@BodyParam('sessionId', { required: true }) sessionId: number): Promise<Image> {
+  public play(@BodyParam('sessionId', { required: true }) sessionId: number): Promise<Image> {
     sessionId;
     return this.imageRepository.getHardcoded();
   }

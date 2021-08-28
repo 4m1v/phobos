@@ -32,13 +32,14 @@ class ImageRepository extends Repository<ImageEntity> {
     });
   }
 
-  public findInScarinessRange(min: number, max: number): Promise<ImageEntity[]> {
+  public findInScarinessRangeAndPhobiaId(min: number, max: number, phobiaId?: string): Promise<ImageEntity[]> {
     return this.find({
       order: {
         createdAt: 'DESC',
       },
       where: {
         scariness: Between(min, max),
+        phobiaId,
       },
     });
   }
