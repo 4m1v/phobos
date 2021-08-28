@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       minHeight: '100vh',
       background: theme.palette.background.paper,
     },
+    /*
     toolbar: {
       ...theme.mixins.toolbar,
     },
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       marginLeft: DRAWER_WIDTH,
     },
+    */
   }),
 );
 
@@ -51,10 +53,7 @@ const Layout: FC<LayoutProps> = ({ toggleTheme, useDefaultTheme, children }: Lay
     <div className={classes.root}>
       <CssBaseline />
       <Header open={open} handleMenuOpen={toggle} toggleTheme={toggleTheme} useDefaultTheme={useDefaultTheme} />
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        {children}
-      </main>
+      <main className={classes.content}>{children}</main>
     </div>
   );
 };

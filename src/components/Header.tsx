@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography, IconButton, Tooltip, createStyles, makeSty
 import MenuIcon from '@material-ui/icons/Menu';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import { useHistory } from 'react-router-dom';
 
 // constants
@@ -12,6 +13,7 @@ import { APP_TITLE, DRAWER_WIDTH } from '../utils/constants';
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    /*
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {
@@ -25,23 +27,15 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    toolbar: {
+    */
+    container: {
+      width: '100%',
+      position: 'fixed',
       flex: 1,
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
-    },
-    title: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    menuButton: {
-      marginRight: 36,
-    },
-    hide: {
-      display: 'none',
+      justifyContent: 'space-between',
+      padding: theme.spacing(1),
     },
   }),
 );
@@ -60,33 +54,26 @@ const Header = ({ open, handleMenuOpen, toggleTheme, useDefaultTheme }: HeaderPr
   const goHome = () => {
     history.push('/');
   };
+
   return (
-    <AppBar
-      position="fixed"
-      elevation={0}
-      className={clsx(classes.appBar, {
-        [classes.appBarShift]: open,
-      })}
-    >
-      <Toolbar className={classes.toolbar}>
-        <div className={classes.title} style={{ cursor: 'pointer' }}>
-          <Typography variant="h6" noWrap onClick={goHome}>
-            {APP_TITLE}
-          </Typography>
-        </div>
-        <IconButton onClick={toggleTheme}>
-          {useDefaultTheme ? (
-            <Tooltip title="Switch to dark mode" placement="bottom">
-              <Brightness3Icon />
-            </Tooltip>
-          ) : (
-            <Tooltip title="Switch to light mode" placement="bottom">
-              <Brightness7Icon />
-            </Tooltip>
-          )}
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+    <div className={classes.container}>
+      <IconButton onClick={goHome}>
+        <Tooltip title="Go home" placement="bottom">
+          <HomeRoundedIcon />
+        </Tooltip>
+      </IconButton>
+      <IconButton onClick={toggleTheme}>
+        {useDefaultTheme ? (
+          <Tooltip title="Switch to dark mode" placement="bottom">
+            <Brightness3Icon />
+          </Tooltip>
+        ) : (
+          <Tooltip title="Switch to light mode" placement="bottom">
+            <Brightness7Icon />
+          </Tooltip>
+        )}
+      </IconButton>
+    </div>
   );
 };
 
