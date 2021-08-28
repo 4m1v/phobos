@@ -1,4 +1,4 @@
-import { CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import ImageEntity from './ImageEntity';
 import SessionEntity from './SessionEntity';
 
@@ -6,6 +6,9 @@ import SessionEntity from './SessionEntity';
 class PhobiaEntity {
   @PrimaryColumn()
   public id: string;
+
+  @Column({ nullable: false })
+  public description: string;
 
   @OneToMany(() => ImageEntity, (entity) => entity.phobiaId)
   @JoinColumn()

@@ -1,28 +1,36 @@
 {
   "phobias": [
     {
-      "id": "acrophobia"
+      "id": "acrophobia",
+      "description": "fear of heights"
     },
     {
-      "id": "anthophobia"
+      "id": "anthophobia",
+      "description": "fear of flowers"
     },
     {
-      "id": "arachnophobia"
+      "id": "arachnophobia",
+      "description": "fear of spiders"
     },
     {
-      "id": "chronomentrophobia"
+      "id": "chronomentrophobia",
+      "description": "fear of clocks"
     },
     {
-      "id": "dendrophobia"
+      "id": "dendrophobia",
+      "description": "fear of trees"
     },
     {
-      "id": "herpetophobia"
+      "id": "herpetophobia",
+      "description": "fear of reptiles"
     },
     {
-      "id": "thalassophobia"
+      "id": "thalassophobia",
+      "description": "fear of the ocean"
     },
     {
-      "id": "trypophobia"
+      "id": "trypophobia",
+      "description": "fear of closely-packed holes"
     }
   ],
   "images": [

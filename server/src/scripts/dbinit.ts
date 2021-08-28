@@ -19,8 +19,8 @@ createConnection({
 
   const phobiaRepository = getCustomRepository(PhobiaRepository);
   await Promise.all(
-    data.phobias.map((phobia: { id: string }) => {
-      phobiaRepository.createPhobia(phobia.id).catch((error) => console.error(error));
+    data.phobias.map((phobia: { id: string; description: string }) => {
+      phobiaRepository.createPhobia(phobia.id, phobia.description).catch((error) => console.error(error));
     }),
   );
 

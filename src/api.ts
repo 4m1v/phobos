@@ -8,12 +8,9 @@ export type Image = {
   phobiaId: string;
 };
 
-export type Slide = {
+export type Phobia = {
   id: string;
-  scariness: number;
-  order: number;
-  imageId: string;
-  sessionId: string;
+  description: string;
 };
 
 export type Session = {
@@ -23,4 +20,12 @@ export type Session = {
   phobiaId: string;
   slidesLen: number;
   slides: Slide[];
+};
+
+export type Slide = {
+  id: string;
+  scariness: number;
+  order: number;
+  imageId: string;
+  sessionId: string;
 };

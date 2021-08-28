@@ -1,25 +1,36 @@
-import { BodyParam, Post, JsonController } from 'routing-controllers';
+import { BodyParam, Post, JsonController, Get } from 'routing-controllers';
 import { OpenAPI } from 'routing-controllers-openapi';
-import { toImage, toSession } from '../json';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import ImageRepository from '../repositories/ImageRepository';
-// import PhobiaRepository from '../repositories/PhobiaRepository';
+import PhobiaRepository from '../repositories/PhobiaRepository';
 import SessionRepository from '../repositories/SessionRepository';
 import SlideRepository from '../repositories/SlideRepository';
+import { toImage, toPhobias, toSession } from '../json';
 import { initRecommender, getNextImage, addFeedbackToRecommender } from '../recommender';
 
-import type { Image, Session } from '../../../src/api';
+import type { Image, Phobia, Session } from '../../../src/api';
 
 @JsonController('/api')
 class AnnouncementController {
   @InjectRepository()
   private readonly imageRepository: ImageRepository;
-  // @InjectRepository()
-  // private readonly phobiaRepository: PhobiaRepository;
+  @InjectRepository()
+  private readonly phobiaRepository: PhobiaRepository;
   @InjectRepository()
   private readonly sessionRepository: SessionRepository;
   @InjectRepository()
   private readonly slideRepository: SlideRepository;
+
+  @Get('/phobia')
+  @Post('/start')
+  @OpenAPI({
+    summary: '',
+    description: '',
+  })
+  public async phobias(): Promise<Phobia[]> {
+    const phobias = await this.phobiaRepository.getAll();
+    return toPhobias(phobias);
+  }
 
   @Post('/start')
   @OpenAPI({
