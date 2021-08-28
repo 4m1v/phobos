@@ -27,5 +27,3 @@ export type Session = {
   fearMax: number;
   slides: Slide[];
 };
-
-export type 

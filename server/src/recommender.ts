@@ -1,3 +1,5 @@
+import { Session, Slide, Image } from "../../src/api";
+
 let data = [
   {
     sessionId: "haha",
@@ -25,9 +27,14 @@ let data = [
   },
 ];
 
-let currentSession = {
-  sessionId: "really",
-  fearFactor: { fearMin: 3, fearMax: 10 },
+interface CurrentSession extends Session {
+  predictedRatings: Slide[];
+}
+
+let currentSession: CurrentSession = {
+  id: "really",
+  fearMin: 3,
+  fearMax: 4.5,
   slides: [],
   predictedRatings: [],
 };
@@ -35,10 +42,13 @@ let currentSession = {
 const recalculatePredictedRatings = (): void => {};
 
 const getNextImage = () => {
-  if (currentSession.slides.length() < 5) {
+  if (currentSession.slides.length < 5) {
     // Give them a random easy image.
-    const images = getImagesInRange(fearMin - 0.5, fearMin + 0.5);
-    const index = Math.floor(Math.random() * images.length());
+    const images: Image[] = getImagesInRange(
+      currentSession.fearMin - 0.5,
+      currentSession.fearMin + 0.5
+    );
+    const index = Math.floor(Math.random() * images.length);
     return images[index].id;
   }
 
@@ -46,9 +56,13 @@ const getNextImage = () => {
   recalculatePredictedRatings();
 
   // Choose top 1
-  currentSession.predictedRatings.sort((a, b) => b - a);
+  currentSession.predictedRatings.sort((a, b) => b.scariness - a.scariness);
   const image = currentSession.predictedRatings[0];
 
   // Return it
   return image.id;
+};
+
+const addFeedbackToSystem = (slide: Slide) => {
+  currentSession.slides.push(slide);
 };
