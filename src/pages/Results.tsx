@@ -51,7 +51,7 @@ const Results: FC<Record<string, never>> = (): ReactElement => {
   const [results, setResults] = React.useState<any>([]);
   React.useEffect(() => {
     resultRequest(params.sessionID).then((info) => {
-\      setResults(parseResults(info));
+      setResults(parseResults(info));
     });
   }, []);
 
