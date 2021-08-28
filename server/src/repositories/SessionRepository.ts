@@ -1,5 +1,5 @@
-import { EntityRepository, Repository } from "typeorm";
-import SessionEntity from "../entities/SessionEntity";
+import { EntityRepository, Repository } from 'typeorm';
+import SessionEntity from '../entities/SessionEntity';
 
 @EntityRepository(SessionEntity)
 class SessionRepository extends Repository<SessionEntity> {
@@ -13,7 +13,7 @@ class SessionRepository extends Repository<SessionEntity> {
 
   public getByIdWithSlides(id: string): Promise<SessionEntity> {
     return this.findOne({
-      relations: ["slides"],
+      relations: ['slides'],
       where: {
         id,
       },
@@ -22,10 +22,11 @@ class SessionRepository extends Repository<SessionEntity> {
 
   public findByPhobiaIdWithSlides(phobiaId: string): Promise<SessionEntity[]> {
     return this.find({
+      take: 100,
       order: {
-        createdAt: "DESC",
+        createdAt: 'DESC',
       },
-      relations: ["slides"],
+      relations: ['slides'],
       where: {
         phobiaId,
       },

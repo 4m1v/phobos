@@ -1,6 +1,6 @@
 import config from '../config/config';
 
-import type { Image, Phobia, Session } from '../api';
+import type { Image, Session } from '../api';
 
 type RequestOptions = {
   headers: {
