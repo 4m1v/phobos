@@ -99,6 +99,7 @@ export const initRecommender = async (
 };
 
 export const recalculatePredictedRatings = (): any => {
+  currentSession.predictedRatings = [];
   const viewed: { [x: string]: number } = {};
   let currentSeshMod = 0;
   // Get what images the current session has viewed, represented in a different way.
