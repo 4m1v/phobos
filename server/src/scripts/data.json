@@ -525,63 +525,63 @@
       "phobiaId": "anthophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Psilochorus_sp_with_eggs_Kern_2016-09-01.jpg",
+      "scariness": 8,
       "phobiaId": "arachnophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Latrodectus_hasselti_male.png",
+      "scariness": 5,
       "phobiaId": "arachnophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Brachypelma_klaasi_2009_G01_cropped.jpg/800px-Brachypelma_klaasi_2009_G01_cropped.jpg",
+      "scariness": 4,
       "phobiaId": "arachnophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://static.wikia.nocookie.net/phobia/images/8/89/Clocks.jpg/revision/latest?cb=20161201032608",
+      "scariness": 5,
       "phobiaId": "chronomentrophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://i1.sndcdn.com/artworks-000089046297-5dj660-t500x500.jpg",
+      "scariness": 3,
       "phobiaId": "chronomentrophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://timeandtidewatches.com/wp-content/uploads/2021/01/fear.jpg",
+      "scariness": 9,
       "phobiaId": "chronomentrophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://creaturecourage.com/wp-content/uploads/2021/03/Bead-toy-lizard.jpg",
+      "scariness": 2,
       "phobiaId": "herpetophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://www.verywellmind.com/thmb/jatIfC_niOWcHdOoKtR0zZ4Ljy4=/1500x844/smart/filters:no_upscale()/GettyImages-602200959web-56d5be953df78cfb37da3efb.jpg",
+      "scariness": 7,
       "phobiaId": "herpetophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://static.wikia.nocookie.net/superfriends/images/d/d1/Herpetophobia.jpg/revision/latest?cb=20120330192614",
+      "scariness": 10,
       "phobiaId": "herpetophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://i.redd.it/phrijrx9f6b11.jpg",
+      "scariness": 7,
       "phobiaId": "thalassophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://i.redd.it/mobbeit2lvr01.jpg",
+      "scariness": 8,
       "phobiaId": "thalassophobia"
     },
     {
-      "url": "",
-      "scariness": 0,
+      "url": "https://i.redd.it/7bcztw2g55511.jpg",
+      "scariness": 9,
       "phobiaId": "thalassophobia"
     }
   ]
