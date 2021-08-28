@@ -78,23 +78,19 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
 
   const updatePagesRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
     setSliderPagesVal(data);
-    console.log(data);
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateFearRange = (eevent: ChangeEvent<Record<string, unknown>>, data: any) => {
     setSliderFearVal(data);
-    console.log(data);
   };
   const updateZoomRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
     setSliderZoomVal(data);
-    console.log(data);
   };
 
   const playPhobia = () => {
     // Some promises here.
     startRequest(sliderFearVal[0], sliderFearVal[1], phobiaTitle)
       .then((dataID) => {
-        console.log(dataID);
         history.push(`/phobia/play/${dataID.sessionId}`);
       })
       .catch((err) => {

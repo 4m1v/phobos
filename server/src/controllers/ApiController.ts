@@ -83,9 +83,7 @@ class AnnouncementController {
     description: 'Output of `Session` defined in api.ts',
   })
   public async result(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Session> {
-    console.log(sessionId);
     const session = await this.sessionRepository.getByIdWithSlides(sessionId);
-    console.log(session);
     return toSession(session);
   }
 }

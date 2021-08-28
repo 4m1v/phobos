@@ -30,8 +30,7 @@ const request = (method: Method, url: string, body: any = {}): Promise<any> => {
   if (method !== 'GET') {
     requestOptions.body = JSON.stringify(body);
   }
-  console.log(requestOptions);
-  console.log(`${url}`);
+
   return fetch(url, requestOptions)
     .then((res) => res.json().then((json) => ({ status: res.status, json })))
     .then((res) => {
