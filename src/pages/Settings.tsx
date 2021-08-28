@@ -55,10 +55,11 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
   const [sliderZoomVal, setSliderZoomVal] = React.useState<number[] | number>([1]);
   const [phobiaTitle, setPhobiaTitle] = React.useState('');
-  const params: { phobia: string } = useParams();
+  const params: { category: string } = useParams();
 
   React.useEffect(() => {
-    setPhobiaTitle(params.phobia);
+    setPhobiaTitle(params.category);
+    console.log('hello');
   }, []);
 
   const updatePagesRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
