@@ -1,12 +1,25 @@
 import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
-import { makeStyles, createStyles, Theme, Button, Slider, Typography } from '@material-ui/core';
+import {
+  makeStyles,
+  createStyles,
+  Theme,
+  Button,
+  Slider,
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContentText,
+  DialogContent,
+  DialogTitle,
+} from '@material-ui/core';
 import useCountDown from 'react-countdown-hook';
 import BorderLinearProgress from './BorderLinearProgress';
 
 // constants
 import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
+import SlideshowDialog from './SlideshowDialog';
 
 interface SlideshowProps {
   tmp: string;
@@ -66,12 +79,15 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [mediaContSize, setMediaContSize] = useState(10);
   const [mediaHundredWidth, setMediaHundredWidth] = useState(false);
   const media = useRef<HTMLImageElement>(null);
+
   const [barTimer, setBarTimer] = useState<number>(0);
   const [timerStarted, setTimerStarted] = useState<boolean>(false);
   const initialTime = 5000;
   const interval = 100;
   // Set the media container size according to zoom
   const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
+
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   // const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {
@@ -94,6 +110,13 @@ const Slideshow: FC<Record<string, never>> = () => {
     }
   }, [timeLeft, timerStarted]);
 
+  useEffect(() => {
+    if (timerStarted && barTimer === 100) {
+      setDialogOpen(true);
+      console.log('HABUDSHBJAHBDJHBASJHABSJHBDS');
+    }
+  }, [barTimer, timerStarted]);
+
   // Determine whether the media's size should be limited by the width or height of its container
   useEffect(() => {
     if (media != null && media.current != null) {
@@ -104,6 +127,15 @@ const Slideshow: FC<Record<string, never>> = () => {
 
   return (
     <main>
+      {/* TODO Change isLast */}
+      <SlideshowDialog
+        open={dialogOpen}
+        isLast={false}
+        handleClose={() => setDialogOpen(false)}
+        onNext={() => {
+          console.log('Do next page');
+        }}
+      />
       <div className={classes.roundUi}>
         <div className={classes.roundHeader}>
           {/* <Button variant="contained">Back</Button> */}

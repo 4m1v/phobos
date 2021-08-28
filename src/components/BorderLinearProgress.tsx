@@ -23,6 +23,7 @@ const BorderLinearProgress = withStyles((theme: Theme) =>
       // borderRadius: 5,
       // backgroundColor: '#1a90ff',
       opacity: '80%',
+      transition: '0.08s linear',
     },
   }),
 )(LinearProgress);
