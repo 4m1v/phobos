@@ -19,7 +19,7 @@ In the project directory, you can run:
 ### `yarn lint`
 
 Lints the project.\
-Check `.eslintrc.js` and `.prettierrc.js` to change coding standards.
+Check `.eslintrc.js` to change coding standards.
 
 ### `yarn start`
 

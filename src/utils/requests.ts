@@ -11,7 +11,7 @@ type RequestOptions = {
   body?: string;
 };
 
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
+type Method = 'GET' | 'POST';
 
 /**
  * All functions in this file provide a standard way to access the backend API,

@@ -1,50 +1,36 @@
 # Backend
 
-### Run
+## Available Scripts
 
-`yarn start`
+In the project directory, you can run:
+
+### `yarn lint`
+
+Lints the project.
+
+### `yarn start`
 
 Runs the backend.
 
-`yarn wstart`
+`yarn wstart` for Windows. 
 
-Same as above but for Windows. 
-
-`yarn dev`
+### `yarn dev`
 
 Runs the backend with automatic reload if there are changes.
 
-`yarn wdev`
+`yarn wdev` for Windows.
 
-Same as above but for Windows.
-
-`yarn lint`
-
-Please lint your code before you commit anything.
-
-`yarn dbclear`
+### `yarn dbclear`
 
 Clears and synchronises the database.
 
-`yarn wdbclear`
+`yarn wdbclear` for Windows.
 
-Same as above but for Windows.
-
-`yarn dbinit`
+### `yarn dbinit`
 
 Loads the database with some sample data.
 
-`yarn wdbinit`
-
-Same as above but for Windows.
-
-`yarn dbinit2`
-
-Loads the database with a lot of data scraped from Steam.
-
-`yarn wdbinit2`
-
-Same as above but for Windows.
+`yarn wdbinit` for Windows.
 
 ## Database
 
