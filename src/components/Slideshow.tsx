@@ -75,7 +75,9 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [timerStarted, setTimerStarted] = useState<boolean>(false);
   const initialTime = 5000;
   const interval = 100;
+
   // Set the media container size according to zoom
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -85,6 +87,7 @@ const Slideshow: FC<Record<string, never>> = () => {
 
   // Slideshow state
   const sessionPageMax = sessionStorage.getItem('pageMax');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [pageMax, setPageMax] = useState(sessionPageMax ? JSON.parse(sessionPageMax) : 1);
   const [pageCurr, setPageCurr] = useState(1);
   const [imageUrl, setImageUrl] = useState('');
@@ -144,7 +147,8 @@ const Slideshow: FC<Record<string, never>> = () => {
         open={dialogOpen}
         isLast={pageMax == pageCurr}
         scariness={scariness}
-        setScariness={(n: number) => setScariness(n)}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        setScariness={(newScariness: any) => setScariness(newScariness)}
         handleClose={() => setDialogOpen(false)}
         onNext={() => {
           feedbackRequest(imageId, params.sessionID, scariness).catch((e) => console.log(e));
@@ -203,7 +207,8 @@ const Slideshow: FC<Record<string, never>> = () => {
           step={zoomIncrement}
           min={ZOOM_MIN}
           max={ZOOM_MAX}
-          onChange={(event, newZoom: number) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onChange={(event, newZoom: any) => {
             setZoom(newZoom);
           }}
         />
