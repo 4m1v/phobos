@@ -21,7 +21,7 @@ class AnnouncementController {
   @InjectRepository()
   private readonly slideRepository: SlideRepository;
 
-  @Get('/phobia')
+  @Get('/phobias')
   @Post('/start')
   @OpenAPI({
     summary: '',

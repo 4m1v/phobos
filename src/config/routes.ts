@@ -15,7 +15,7 @@ import Slideshow from '../components/Slideshow';
 import RouteItem from '../model/RouteItem.model';
 
 // define app routes
-export const routes: Array<RouteItem> = [
+const routes: Array<RouteItem> = [
   {
     key: 'router-home',
     title: 'Home',
@@ -72,3 +72,5 @@ export const routes: Array<RouteItem> = [
     icon: SettingsIcon,
   },
 ];
+
+export default routes;
