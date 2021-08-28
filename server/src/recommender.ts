@@ -121,7 +121,7 @@ export const recalculatePredictedRatings = (): any => {
         sessionMod += slide.scariness * slide.scariness;
         features++;
       }
-      console.log({ scariness: slide.scariness, imageId: viewed[slide.imageId] });
+
     });
 
     sessionMod = Math.sqrt(sessionMod);
@@ -163,17 +163,7 @@ export const recalculatePredictedRatings = (): any => {
   return currentSession.predictedRatings;
 };
 
-export const getNextImage = async (sessionId: string): Promise<string> => {
-  const imageRepository = await createConnection({
-    type: "sqlite",
-    database: process.env.DB,
-    entities: [__dirname + "../../entities/*.ts"],
-  }).then(async (connection) => {
-    await connection.synchronize();
-
-    return getCustomRepository(ImageRepository);
-  });
-
+export const getNextImage = async (sessionId: string, imageRepository: ImageRepository): Promise<string> => {
   if (currentSession.slides.length < Number.POSITIVE_INFINITY) {
     // Give them a random easy image.
     const images: ImageEntity[] = await imageRepository.findInScarinessRangeAndPhobiaId(
