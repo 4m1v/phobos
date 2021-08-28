@@ -208,7 +208,7 @@ const Slideshow: FC<Record<string, never>> = () => {
           value={zoom}
           step={zoomIncrement}
           valueLabelDisplay="on"
-          valueLabelFormat={(value) => <div>🖐️</div>}
+          valueLabelFormat={() => <div>🖐️</div>}
           min={ZOOM_MIN}
           max={ZOOM_MAX}
           marks={[
