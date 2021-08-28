@@ -1,6 +1,7 @@
 import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, createStyles, Theme, Button, LinearProgress, Slider } from '@material-ui/core';
+import { makeStyles, createStyles, Theme, Button, LinearProgress, Slider, Typography } from '@material-ui/core';
+import useCountDown from 'react-countdown-hook';
 
 // constants
 import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
@@ -60,18 +61,20 @@ const Slideshow: FC<Record<string, never>> = () => {
   const media = useRef<HTMLImageElement>(null);
   const [finishedSlide, setFinishedSlide] = useState(false);
 
+  const initialTime = 5000;
+  const interval = 100;
   // Set the media container size according to zoom
-  const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
+  const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
+
+  // const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {
     setMediaContSize(100 * (zoom / ZOOM_MAX));
     if (zoom === ZOOM_MAX) {
-      console.log('bob');
-      intervalRef.current = setTimeout(() => {
-        setFinishedSlide(true);
-      }, 10000);
+      start();
+    } else {
+      pause();
+      reset();
     }
-
-    return () => clearTimeout(intervalRef.current as NodeJS.Timeout);
   }, [zoom]);
 
   // Determine whether the media's size should be limited by the width or height of its container
@@ -136,6 +139,7 @@ const Slideshow: FC<Record<string, never>> = () => {
         }
       </div>
       <Button variant="contained">Auto</Button>
+      <Typography> {timeLeft} </Typography>
     </main>
   );
 };
