@@ -4,10 +4,10 @@
   "private": true,
   "main": "index.js",
   "type": "module",
-  "dependencies": {
-    "apollo-server-core": "^3.3.0",
-    "apollo-server-express": "^3.3.0",
-    "express": "^4.17.1",
-    "graphql": "^15.5.1"
+  "scripts": {
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "json-graphql-server": "^2.2.3"
   }
 }
