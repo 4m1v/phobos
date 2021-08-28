@@ -32,14 +32,6 @@ Take in a correctly ordered array of images with their links and ids, and an aut
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      height: '100%',
-      width: '100%',
       backdropFilter: 'blur(8px)',
       // backgroundColor: '#00000080', // dark grey
       zIndex: 99999,
@@ -48,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'none',
     },
     slider: {
-      width: '400px',
+      width: '300px',
       margin: '0 auto',
     },
   }),
@@ -57,21 +49,31 @@ const useStyles = makeStyles((theme: Theme) =>
 type SlideshowDialogProps = {
   open: boolean;
   isLast: boolean;
+  scariness: number;
+  setScariness: (data: number | number[]) => void;
   handleClose: () => void;
   onNext: () => void;
+  onFinish: () => void;
 };
 
-const SlideshowDialog: FC<SlideshowDialogProps> = ({ open, isLast, handleClose, onNext }: SlideshowDialogProps) => {
+const SlideshowDialog: FC<SlideshowDialogProps> = ({
+  open,
+  isLast,
+  scariness,
+  setScariness,
+  handleClose,
+  onNext,
+  onFinish,
+}: SlideshowDialogProps) => {
   const classes = useStyles();
-  const [scarinessVal, setScarinessVal] = React.useState<number[] | number>([1]);
 
-  const updateScariness = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
-    setScarinessVal(data);
+  const updateScariness = (event: ChangeEvent<Record<string, unknown>>, data: number | number[]) => {
+    setScariness(data);
   };
 
   return (
     <>
-      <Dialog open={open} className={classes.root} maxWidth="sm" fullWidth>
+      <Dialog open={open} className={classes.root} maxWidth="xs" fullWidth>
         <DialogTitle>Well Done!</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">How did you do?</DialogContentText>
@@ -82,7 +84,7 @@ const SlideshowDialog: FC<SlideshowDialogProps> = ({ open, isLast, handleClose, 
               valueLabelDisplay="auto"
               min={1}
               max={10}
-              value={scarinessVal}
+              value={scariness}
               onChange={updateScariness}
               marks={FEARFACTORMARKS}
             />
@@ -92,7 +94,11 @@ const SlideshowDialog: FC<SlideshowDialogProps> = ({ open, isLast, handleClose, 
           <Button
             onClick={() => {
               handleClose();
-              onNext();
+              if (!isLast) {
+                onNext();
+              } else {
+                onFinish();
+              }
             }}
             color="primary"
             autoFocus

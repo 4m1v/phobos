@@ -69,7 +69,7 @@ export const feedbackRequest = (imageId: string, sessionId: string, scariness: n
 };
 
 export const resultRequest = (sessionId: string): Promise<Session> => {
-  return request('POST', `${config.url}/api/start`, {
+  return request('POST', `${config.url}/api/result`, {
     sessionId,
   });
 };
