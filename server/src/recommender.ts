@@ -1,4 +1,7 @@
-import { Session, Slide, Image } from "../../src/api";
+import { getCustomRepository } from "typeorm";
+import type { Session, Slide, Image } from "../../src/api";
+import ImageRepository from "./repositories/ImageRepository";
+import PhobiaRepository from "./repositories/PhobiaRepository";
 
 let data = [
   {
@@ -35,16 +38,24 @@ let currentSession: CurrentSession = {
   id: "really",
   fearMin: 3,
   fearMax: 4.5,
+  phobiaId: "hi",
+  slidesLen: -1,
   slides: [],
   predictedRatings: [],
 };
 
+const imageRepository = getCustomRepository(ImageRepository);
+
+export const initRecommender = (session: Session) => {
+  currentSession = {...session, predictedRatings: []};
+} 
+
 const recalculatePredictedRatings = (): void => {};
 
-const getNextImage = () => {
-  if (currentSession.slides.length < 5) {
+export const getNextImage = async () => {
+  if (currentSession.slides.length < Number.POSITIVE_INFINITY) {
     // Give them a random easy image.
-    const images: Image[] = getImagesInRange(
+    const images: Image[] = await imageRepository.findInScarinessRange(
       currentSession.fearMin - 0.5,
       currentSession.fearMin + 0.5
     );
@@ -63,6 +74,6 @@ const getNextImage = () => {
   return image.id;
 };
 
-const addFeedbackToSystem = (slide: Slide) => {
+export const addFeedbackToSystem = (slide: Slide) => {
   currentSession.slides.push(slide);
 };
