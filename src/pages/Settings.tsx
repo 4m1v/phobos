@@ -61,11 +61,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>([1]);
-<<<<<<< HEAD
-  const [sliderFearVal, setSliderFearVal] = React.useState<number[]>([0, 100]);
-=======
   const [sliderFearVal, setSliderFearVal] = React.useState<number[]>([2, 4]);
->>>>>>> 9d8b44ef96d482227e8ab16adb6cd96d29a00392
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
   const [sliderZoomVal, setSliderZoomVal] = React.useState<number[] | number>([1]);
   const [phobiaTitle, setPhobiaTitle] = React.useState('');
