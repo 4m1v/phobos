@@ -172,22 +172,21 @@ const Slideshow: FC<Record<string, never>> = () => {
         {
           // Image number
         }
-        {
-          // Zoom timer
-
-          <Slider
-            value={zoom}
-            step={zoomIncrement}
-            min={ZOOM_MIN}
-            max={ZOOM_MAX}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onChange={(event, newValue: any) => {
-              setZoom(newValue);
-            }}
-          />
-        }
+        <Slider
+          value={zoom}
+          step={zoomIncrement}
+          min={ZOOM_MIN}
+          max={ZOOM_MAX}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onChange={(event, newValue: any) => {
+            setZoom(newValue);
+          }}
+        />
       </div>
-      <Button variant="contained">Auto</Button>
+      <Typography align="center" variant="h5">
+        Face your fears
+      </Typography>
+      {/* <Button variant="contained">Auto</Button> */}
     </main>
   );
 };
