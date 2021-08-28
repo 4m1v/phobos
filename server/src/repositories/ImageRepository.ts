@@ -3,6 +3,11 @@ import ImageEntity from '../entities/ImageEntity';
 
 @EntityRepository(ImageEntity)
 class ImageRepository extends Repository<ImageEntity> {
+  // TODO delete when recommendation system is complete
+  public getId(): Promise<string> {
+    return this.findOne({}).then((image) => image.id);
+  }
+
   public getById(id: string): Promise<ImageEntity> {
     return this.findOne({
       where: {
