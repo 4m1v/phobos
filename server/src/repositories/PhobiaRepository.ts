@@ -3,12 +3,9 @@ import PhobiaEntity from '../entities/PhobiaEntity';
 
 @EntityRepository(PhobiaEntity)
 class PhobiaRepository extends Repository<PhobiaEntity> {
-  public getById(id: string): Promise<PhobiaEntity> {
-    return this.findOne({
-      where: {
-        id,
-      },
-    });
+  public async createPhobia(id: string): Promise<void> {
+    const result = this.create({ id });
+    await this.save(result);
   }
 }
 

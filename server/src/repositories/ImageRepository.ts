@@ -3,6 +3,16 @@ import ImageEntity from '../entities/ImageEntity';
 
 @EntityRepository(ImageEntity)
 class ImageRepository extends Repository<ImageEntity> {
+  // TODO delete once recommendation system is implemented
+  public getHardcoded(): Promise<ImageEntity> {
+    return this.findOne({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+
+  // TODO check if needed
   public getById(id: string): Promise<ImageEntity> {
     return this.findOne({
       where: {
@@ -22,15 +32,21 @@ class ImageRepository extends Repository<ImageEntity> {
     });
   }
 
-  public findInScarinessRange(min: number, max: number): Promise<ImageEntity[]> {
+  public findInScarinessRangeAndPhobiaId(min: number, max: number, phobiaId?: string): Promise<ImageEntity[]> {
     return this.find({
       order: {
         createdAt: 'DESC',
       },
       where: {
         scariness: Between(min, max),
+        phobiaId,
       },
     });
+  }
+
+  public async createImage(url: string, scariness: number, phobiaId: string): Promise<void> {
+    const result = this.create({ url, scariness, phobiaId });
+    await this.save(result);
   }
 }
 

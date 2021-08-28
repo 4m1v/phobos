@@ -17,7 +17,7 @@ class ImageEntity {
   @Column({ nullable: false })
   public url: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, default: 0 })
   public seen: number;
 
   @Column({ nullable: false })

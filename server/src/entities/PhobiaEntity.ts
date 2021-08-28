@@ -1,17 +1,9 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
-import ImageEntity from './ImageEntity';
+import { CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('Phobia')
 class PhobiaEntity {
   @PrimaryColumn()
   public id: string;
-
-  @Column({ nullable: false })
-  public seen: number;
-
-  @OneToMany(() => ImageEntity, (item) => item.phobiaId)
-  @JoinColumn()
-  public images: ImageEntity[];
 
   @CreateDateColumn({ type: 'datetime', default: () => "DATETIME('now')" })
   public createdAt: Date;

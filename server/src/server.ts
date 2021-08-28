@@ -10,6 +10,8 @@ import path from 'path';
 import morgan from 'morgan';
 import { serve, setup } from 'swagger-ui-express';
 
+import ApiController from 'controllers/ApiController';
+
 /**
  * Start Express server.
  */
@@ -33,7 +35,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, '../access.log
 const spec = routingControllersToSpec(
   getMetadataArgsStorage(),
   {
-    controllers: [],
+    controllers: [ApiController],
   },
   {
     components: {
