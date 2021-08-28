@@ -8,10 +8,6 @@ export type Image = {
   phobiaId: string;
 };
 
-export type Phobia = {
-  id: string;
-};
-
 export type Slide = {
   id: string;
   scariness: number;

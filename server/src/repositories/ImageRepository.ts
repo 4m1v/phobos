@@ -42,6 +42,11 @@ class ImageRepository extends Repository<ImageEntity> {
       },
     });
   }
+
+  public async createImage(url: string, scariness: number, phobiaId: string): Promise<void> {
+    const result = this.create({ url, scariness, phobiaId });
+    await this.save(result);
+  }
 }
 
 export default ImageRepository;
