@@ -49,9 +49,11 @@ const Results: FC<Record<string, never>> = (): ReactElement => {
 
   const [results, setResults] = React.useState<{ x: number; y: number }[]>([]);
   React.useEffect(() => {
-    resultRequest(params.sessionID).then((info) => {
-      setResults(parseResults(info));
-    });
+    resultRequest(params.sessionID)
+      .then((info) => {
+        setResults(parseResults(info));
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   return (
