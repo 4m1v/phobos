@@ -9,8 +9,6 @@ type Image {
     id: !Int
     title: !String
     url: !String
-    width: !Int
-    height: !Int
     scariness: !Int
     phobium_id: String
 }
@@ -27,8 +25,6 @@ Image(id: 1) {
     id
     title
     url
-    width
-    height
     scariness
 }
 Phobium(id: "thalassophobia") {
@@ -37,8 +33,6 @@ Phobium(id: "thalassophobia") {
         id
         title
         url
-        width
-        height
         scariness
     }
 }

@@ -34,8 +34,6 @@ const GET_PHOBIA_IMAGES = gql`
         id
         title
         url
-        width
-        height
         scariness
       }
     }
