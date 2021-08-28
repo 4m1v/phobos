@@ -98,10 +98,12 @@ const Slideshow: FC<Record<string, never>> = () => {
   };
 
   useEffect(() => {
-    playRequest(params.sessionID).then((info) => {
-      setImageUrl(info.url);
-      setImageId(info.id);
-    });
+    playRequest(params.sessionID)
+      .then((info) => {
+        setImageUrl(info.url);
+        setImageId(info.id);
+      })
+      .catch((e) => console.log(e));
     resetZoom();
   }, [pageCurr]);
 
