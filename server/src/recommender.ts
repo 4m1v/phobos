@@ -1,5 +1,7 @@
 import { getCustomRepository } from 'typeorm';
-import type { Session, Slide, Image } from '../../src/api';
+import ImageEntity from './entities/ImageEntity';
+import SessionEntity from './entities/SessionEntity';
+import SlideEntity from './entities/SlideEntity';
 import ImageRepository from './repositories/ImageRepository';
 import PhobiaRepository from './repositories/PhobiaRepository';
 
@@ -30,8 +32,8 @@ const data = [
   },
 ];
 
-interface CurrentSession extends Session {
-  predictedRatings: Slide[];
+interface CurrentSession extends SessionEntity {
+  predictedRatings: SlideEntity[];
 }
 
 let currentSession: CurrentSession = {
@@ -42,20 +44,23 @@ let currentSession: CurrentSession = {
   slidesLen: -1,
   slides: [],
   predictedRatings: [],
+  phobia: undefined,
+  createdAt: undefined,
+  updatedAt: undefined,
 };
 
 const imageRepository = getCustomRepository(ImageRepository);
 
-export const initRecommender = (session: Session): void => {
+export const initRecommender = (session: SessionEntity): void => {
   currentSession = { ...session, predictedRatings: [] };
 };
 
 // const recalculatePredictedRatings = (): void => {};
 
-export const getNextImage = async (): Promise<string> => {
+export const getNextImage = async (sessionId: string): Promise<string> => {
   if (currentSession.slides.length < Number.POSITIVE_INFINITY) {
     // Give them a random easy image.
-    const images: Image[] = await imageRepository.findInScarinessRangeAndPhobiaId(
+    const images: ImageEntity[] = await imageRepository.findInScarinessRangeAndPhobiaId(
       currentSession.fearMin - 0.5,
       currentSession.fearMin + 0.5,
     );
@@ -74,6 +79,6 @@ export const getNextImage = async (): Promise<string> => {
   return image.id;
 };
 
-export const addFeedbackToSystem = (slide: Slide): void => {
+export const addFeedbackToRecommender = (sessionId: string, slide: SlideEntity): void => {
   currentSession.slides.push(slide);
 };
