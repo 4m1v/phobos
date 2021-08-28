@@ -1,6 +1,15 @@
 import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, createStyles, Theme, Button, LinearProgress, Slider, Typography } from '@material-ui/core';
+import {
+  makeStyles,
+  createStyles,
+  Theme,
+  Button,
+  LinearProgress,
+  Slider,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import useCountDown from 'react-countdown-hook';
 
 // constants
@@ -13,6 +22,21 @@ interface SlideshowProps {
 /*
 Take in a correctly ordered array of images with their links and ids, and an auto zoom setting (which should be modifiable here)
 */
+const BorderLinearProgress = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      height: 25,
+      borderRadius: 5,
+    },
+    colorPrimary: {
+      backgroundColor: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+    },
+    bar: {
+      borderRadius: 5,
+      backgroundColor: '#1a90ff',
+    },
+  }),
+)(LinearProgress);
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,12 +46,12 @@ const useStyles = makeStyles((theme: Theme) =>
       background: theme.palette.background.paper,
     },
     roundUi: {
-      position: 'fixed',
+      // position: 'fixed',
     },
     roundHeader: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100vw',
+      // display: 'flex',
+      // justifyContent: 'space-between',
+      // width: '100vw',
     },
     mediaContainer: {
       zIndex: -1,
@@ -64,17 +88,10 @@ const Slideshow: FC<Record<string, never>> = () => {
   const initialTime = 5000;
   const interval = 100;
   // Set the media container size according to zoom
-  const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   // const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {
     setMediaContSize(100 * (zoom / ZOOM_MAX));
-    if (zoom === ZOOM_MAX) {
-      start();
-    } else {
-      pause();
-      reset();
-    }
   }, [zoom]);
 
   // Determine whether the media's size should be limited by the width or height of its container
@@ -87,16 +104,16 @@ const Slideshow: FC<Record<string, never>> = () => {
 
   return (
     <main>
-      {/* <div className={classes.roundUi}>
+      <div className={classes.roundUi}>
         <div className={classes.roundHeader}>
           <Button variant="contained">Back</Button>
           {
             // Max zoom timer
-            // <LinearProgress variant="determinate" value={maxZoomProgress} />
+            // <BorderLinearProgress variant="determinate" value={Math.round((timeLeft / initialTime) * 100)} />
           }
           <Button variant="contained">Help</Button>
         </div>
-      </div> */}
+      </div>
       <div className={classes.mediaContainer}>
         <div
           className={classes.mediaInnerContainer}
@@ -139,7 +156,6 @@ const Slideshow: FC<Record<string, never>> = () => {
         }
       </div>
       <Button variant="contained">Auto</Button>
-      <Typography> {timeLeft} </Typography>
     </main>
   );
 };
