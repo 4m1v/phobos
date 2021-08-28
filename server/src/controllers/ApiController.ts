@@ -1,14 +1,14 @@
-import { BodyParam, Post, JsonController, Get } from 'routing-controllers';
+import { BodyParam, Post, JsonController } from 'routing-controllers';
 import { OpenAPI } from 'routing-controllers-openapi';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import ImageRepository from '../repositories/ImageRepository';
 import PhobiaRepository from '../repositories/PhobiaRepository';
 import SessionRepository from '../repositories/SessionRepository';
 import SlideRepository from '../repositories/SlideRepository';
-import { toImage, toPhobias, toSession } from '../json';
+import { toImage, toSession } from '../json';
 import { initRecommender, getNextImage, addFeedbackToRecommender, recalculatePredictedRatings } from '../recommender';
 
-import type { Image, Phobia, Session } from '../../../src/api';
+import type { Image, Session } from '../../../src/api';
 
 @JsonController('/api')
 class AnnouncementController {

@@ -1,9 +1,8 @@
 import ImageEntity from './entities/ImageEntity';
-import PhobiaEntity from './entities/PhobiaEntity';
 import SessionEntity from './entities/SessionEntity';
 import SlideEntity from './entities/SlideEntity';
 
-import type { Image, Phobia, Session, Slide } from '../../src/api';
+import type { Image, Session, Slide } from '../../src/api';
 
 /**
  * This contains all functions to convert entity objects to output types in JSON form.
@@ -18,15 +17,6 @@ export const toImage = (entity: ImageEntity): Image => {
     scariness: entity.scariness,
     phobiaId: entity.phobiaId,
   };
-};
-
-export const toPhobias = (entities: PhobiaEntity[]): Phobia[] => {
-  return entities.map((entity) => {
-    return {
-      id: entity.id,
-      description: entity.description,
-    };
-  });
 };
 
 const toSlide = (entity: SlideEntity): Slide => {

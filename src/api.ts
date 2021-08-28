@@ -8,11 +8,6 @@ export type Image = {
   phobiaId: string;
 };
 
-export type Phobia = {
-  id: string;
-  description: string;
-};
-
 export type Session = {
   id: string;
   fearMin: number;
