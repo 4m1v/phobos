@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState, useRef, useEffect } from 'react';
+import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles, Theme, Button, LinearProgress, Slider } from '@material-ui/core';
 
@@ -29,12 +29,12 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100vw',
     },
     mediaContainer: {
-      zIndex: 1,
+      zIndex: -1,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       width: '100%',
-      height: '75vh',
+      height: '77vh',
     },
     mediaInnerContainer: {
       display: 'flex',
@@ -58,11 +58,20 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [mediaContSize, setMediaContSize] = useState(10);
   const [mediaHundredWidth, setMediaHundredWidth] = useState(false);
   const media = useRef<HTMLImageElement>(null);
-  const history = useHistory();
+  const [finishedSlide, setFinishedSlide] = useState(false);
 
   // Set the media container size according to zoom
+  const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {
     setMediaContSize(100 * (zoom / ZOOM_MAX));
+    if (zoom === ZOOM_MAX) {
+      console.log('bob');
+      intervalRef.current = setTimeout(() => {
+        setFinishedSlide(true);
+      }, 10000);
+    }
+
+    return () => clearTimeout(intervalRef.current as NodeJS.Timeout);
   }, [zoom]);
 
   // Determine whether the media's size should be limited by the width or height of its container
