@@ -6,8 +6,9 @@ import SettingsIcon from '@material-ui/icons/SettingsOutlined';
 // components
 import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard';
-import Phobia from '../pages/Phobia';
+// import Phobia from '../pages/Phobia';
 import Settings from '../pages/Settings';
+import Slideshow from '../components/Slideshow';
 
 // interface
 import RouteItem from '../model/RouteItem.model';
@@ -33,22 +34,31 @@ export const routes: Array<RouteItem> = [
     component: Dashboard,
     icon: DashboardIcon,
   },
-  {
-    key: 'router-phobia',
-    title: 'Phobia',
-    tooltip: 'Phobia',
-    path: '/phobia/:phobia',
-    enabled: false,
-    component: Phobia,
-    icon: DashboardIcon,
-  },
+  // {
+  //   key: 'router-phobia',
+  //   title: 'Phobia',
+  //   tooltip: 'Phobia',
+  //   path: '/phobia/:phobia',
+  //   enabled: false,
+  //   component: Phobia,
+  //   icon: DashboardIcon,
+  // },
   {
     key: 'router-settings',
     title: 'Settings',
     tooltip: 'Settings',
-    path: '/settings',
+    path: '/phobia/:category',
     enabled: true,
     component: Settings,
+    icon: SettingsIcon,
+  },
+  {
+    key: 'router-play',
+    title: 'Play',
+    tooltip: 'Play',
+    path: '/phobia/play/:sessionID',
+    enabled: true,
+    component: Slideshow,
     icon: SettingsIcon,
   },
 ];

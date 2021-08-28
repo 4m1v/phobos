@@ -1,4 +1,37 @@
 export default {
+  // settings from settings page
+  // for each image, how long they took and rating
+  session: [
+    {
+      id: 0,
+    },
+  ],
+  phobia: [
+    {
+      id: 'acrophobia',
+    },
+    {
+      id: 'anthophobia',
+    },
+    {
+      id: 'arachnophobia',
+    },
+    {
+      id: 'chronomentrophobia',
+    },
+    {
+      id: 'dendrophobia',
+    },
+    {
+      id: 'herpetophobia',
+    },
+    {
+      id: 'thalassophobia',
+    },
+    {
+      id: 'trypophobia',
+    },
+  ],
   images: [
     {
       id: 0,
@@ -174,32 +207,6 @@ export default {
       url: 'https://drive.google.com/file/d/1ogsbg7DmboqZ88qkl0jTtjGJTsOp-NgO/view?usp=sharing',
       scariness: 'spicey',
       phobium_id: 'arachnophobia',
-    },
-  ],
-  phobia: [
-    {
-      id: 'acrophobia',
-    },
-    {
-      id: 'anthophobia',
-    },
-    {
-      id: 'arachnophobia',
-    },
-    {
-      id: 'chronomentrophobia',
-    },
-    {
-      id: 'dendrophobia',
-    },
-    {
-      id: 'herpetophobia',
-    },
-    {
-      id: 'thalassophobia',
-    },
-    {
-      id: 'trypophobia',
     },
   ],
 };

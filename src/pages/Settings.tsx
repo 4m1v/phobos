@@ -2,6 +2,7 @@ import React, { ChangeEvent, FC, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Slider, Typography, Checkbox, Button } from '@material-ui/core';
+import { useParams, useHistory } from 'react-router-dom';
 
 // components
 import PageTitle from '../components/PageTitle';
@@ -48,11 +49,17 @@ const useStyles = makeStyles(() =>
 
 const Settings: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
-
+  const history = useHistory();
   const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>([1]);
   const [sliderFearVal, setSliderFearVal] = React.useState<number[] | number>([20, 40]);
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
   const [sliderZoomVal, setSliderZoomVal] = React.useState<number[] | number>([1]);
+  const [phobiaTitle, setPhobiaTitle] = React.useState('');
+  const params: { phobia: string } = useParams();
+
+  React.useEffect(() => {
+    setPhobiaTitle(params.phobia);
+  }, []);
 
   const updatePagesRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
     setSliderPagesVal(data);
@@ -67,6 +74,11 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
     console.log(data);
   };
 
+  const playPhobia = () => {
+    // Some promises here.
+    history.push('/phobia/play/23213123');
+  };
+
   return (
     <>
       <Helmet>
@@ -78,6 +90,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
         <div className={classes.outerBody}>
           <div className={classes.innerBody}>
             <PageTitle title={PAGE_TITLE_SETTINGS} />
+            <Typography align="center">{phobiaTitle}</Typography>
             <div>
               <Typography variant="h5"> PAGES </Typography>
               <Slider
@@ -126,7 +139,13 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
             </div>
           </div>
           <div className={classes.startButtonContainer}>
-            <Button className={classes.startButtonStyles} variant="contained" color="primary" size="large">
+            <Button
+              className={classes.startButtonStyles}
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={playPhobia}
+            >
               Start
             </Button>
           </div>
