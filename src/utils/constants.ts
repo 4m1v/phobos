@@ -3,7 +3,7 @@ export const APP_TITLE = 'Phobos';
 export const FOOTER_TEXT = `${new Date().getFullYear()} Proudly made by 4mv1 ♡`;
 
 // PAGES TITLE
-export const PAGE_TITLE_HOME = 'Home';
+export const PAGE_TITLE_HOME = 'Phobos';
 export const PAGE_TITLE_DASHBOARD = 'Dashboard';
 export const PAGE_TITLE_PHOBIA = 'Phobia';
 export const PAGE_TITLE_SETTINGS = 'Settings';
@@ -65,12 +65,12 @@ export const PAGEMARKS = [
 ];
 export const FEARFACTORMARKS = [
   {
-    value: 0,
-    label: '😀',
+    value: 1,
+    label: '😀 1',
   },
   {
-    value: 100,
-    label: '💀',
+    value: 10,
+    label: '💀 10',
   },
 ];
 export const AUTOZOOMMARKS = [
@@ -79,7 +79,7 @@ export const AUTOZOOMMARKS = [
     label: '1',
   },
   {
-    value: 100,
-    label: '100',
+    value: 10,
+    label: '10',
   },
 ];
