@@ -5,6 +5,8 @@ import { makeStyles, createStyles, Theme, Typography } from '@material-ui/core';
 import PageTitle from '../components/PageTitle';
 import Categories from '../components/Categories';
 
+import logo from '../img/phoboss.png';
+
 // constants
 import { APP_TITLE, PAGE_TITLE_HOME, PHOBIAS } from '../utils/constants';
 
@@ -30,6 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(10),
       maxWidth: theme.spacing(100),
     },
+    logo: {
+      margin: '20px auto',
+      maxWidth: '300px',
+      imageRendering: 'pixelated',
+    },
   }),
 );
 
@@ -44,7 +51,8 @@ const Home: FC<Record<string, never>> = (): ReactElement => {
       </Helmet>
       <div className={classes.root}>
         <div className={classes.body}>
-          <PageTitle title={PAGE_TITLE_HOME} />
+          {/* <PageTitle title={PAGE_TITLE_HOME} /> */}
+          <img src={logo} alt="phobos logo" className={classes.logo} />
           <Typography align="justify" variant="body1">
             Welcome to <i>Phobos!!!</i> Just click on a phobia and start your journey to overcome your fears 😊.
             Don&apos;t worry, we won&apos;t bombard you with the scarist images.Instead, you&apos;ll be in control!
