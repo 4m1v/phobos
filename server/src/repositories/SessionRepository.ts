@@ -11,6 +11,15 @@ class SessionRepository extends Repository<SessionEntity> {
     });
   }
 
+  public getByIdWithSlides(id: string): Promise<SessionEntity> {
+    return this.findOne({
+      relations: ['slides'],
+      where: {
+        id,
+      },
+    });
+  }
+
   public findByPhobiaId(phobiaId: string): Promise<SessionEntity[]> {
     return this.find({
       order: {
@@ -22,10 +31,18 @@ class SessionRepository extends Repository<SessionEntity> {
     });
   }
 
-  public async createSession(fearMin: number, fearMax: number, phobiaId: string): Promise<SessionEntity> {
+  public async createSession(fearMin: number, fearMax: number, phobiaId: string): Promise<string> {
     const result = this.create({ fearMin, fearMax, phobiaId });
-    const output = await this.save(result);
-    return output;
+    const { id } = await this.save(result);
+    return id;
+  }
+
+  public getSlideLenById(id: string): Promise<number> {
+    return this.getById(id).then((session) => session.slidesLen);
+  }
+
+  public async editSlideLenById(id: string, slidesLen: number): Promise<void> {
+    await this.update({ id }, { slidesLen });
   }
 }
 

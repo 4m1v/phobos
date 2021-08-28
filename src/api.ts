@@ -5,25 +5,26 @@ export type Image = {
   url: string;
   seen: number;
   scariness: number;
-  phobia_id: string;
+  phobiaId: string;
 };
 
 export type Phobia = {
   id: string;
-  images: Image[];
 };
 
 export type Slide = {
   id: string;
   scariness: number;
   order: number;
-  image_id: string;
-  session_id: string;
+  imageId: string;
+  sessionId: string;
 };
 
 export type Session = {
   id: string;
   fearMin: number;
   fearMax: number;
+  phobiaId: string;
+  slidesLen: number;
   slides: Slide[];
 };
