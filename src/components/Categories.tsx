@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Chip, makeStyles, createStyles, Theme } from '@material-ui/core';
+import { Chip, Tooltip, Theme, makeStyles, createStyles } from '@material-ui/core';
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface CategoriesProps {
-  categories: string[];
+  categories: { id: string; description: string }[];
 }
 
 // functional component
@@ -27,18 +27,20 @@ const Categories = ({ categories }: CategoriesProps): ReactElement => {
   return (
     <div className={classes.root}>
       {categories.map((category) => (
-        <Chip
-          key={category}
-          label={category}
-          variant="outlined"
-          color="primary"
-          onClick={() => history.push(`/phobia/${category}`)}
-          style={{
-            padding: 25,
-            fontSize: 20,
-          }}
-          clickable
-        />
+        <Tooltip key={category.id} title={category.description} aria-label={category.description}>
+          <Chip
+            key={category.id}
+            label={category.id}
+            variant="outlined"
+            color="primary"
+            onClick={() => history.push(`/phobia/${category.id}`)}
+            style={{
+              padding: 25,
+              fontSize: 20,
+            }}
+            clickable
+          />
+        </Tooltip>
       ))}
     </div>
   );
