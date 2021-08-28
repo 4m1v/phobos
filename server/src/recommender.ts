@@ -1,4 +1,3 @@
-import { getCustomRepository } from 'typeorm';
 import ImageEntity from './entities/ImageEntity';
 import SessionEntity from './entities/SessionEntity';
 import SlideEntity from './entities/SlideEntity';
@@ -49,15 +48,13 @@ let currentSession: CurrentSession = {
   updatedAt: undefined,
 };
 
-const imageRepository = getCustomRepository(ImageRepository);
-
 export const initRecommender = (session: SessionEntity): void => {
   currentSession = { ...session, predictedRatings: [] };
 };
 
 // const recalculatePredictedRatings = (): void => {};
 
-export const getNextImage = async (sessionId: string): Promise<string> => {
+export const getNextImage = async (sessionId: string, imageRepository: any): Promise<string> => {
   if (currentSession.slides.length < Number.POSITIVE_INFINITY) {
     // Give them a random easy image.
     const images: ImageEntity[] = await imageRepository.findInScarinessRangeAndPhobiaId(
@@ -69,7 +66,7 @@ export const getNextImage = async (sessionId: string): Promise<string> => {
   }
 
   // Pattern match, and recalculate predicted ratings
-  recalculatePredictedRatings();
+  // recalculatePredictedRatings();
 
   // Choose top 1
   currentSession.predictedRatings.sort((a, b) => b.scariness - a.scariness);

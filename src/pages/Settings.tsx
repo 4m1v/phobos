@@ -11,6 +11,9 @@ import Container from '@material-ui/core/Container';
 // constants
 import { APP_TITLE, PAGE_TITLE_SETTINGS, PAGEMARKS, FEARFACTORMARKS, AUTOZOOMMARKS } from '../utils/constants';
 
+import { startRequest } from '../utils/requests';
+import { PHOBIAS } from '../utils/constants';
+
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -59,7 +62,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const [sliderPagesVal, setSliderPagesVal] = React.useState<number[] | number>([1]);
-  const [sliderFearVal, setSliderFearVal] = React.useState<number[] | number>([2, 4]);
+  const [sliderFearVal, setSliderFearVal] = React.useState<number[]>([2, 4]);
   const [autoZoomVal, setAutoZoomVal] = React.useState(false);
   const [sliderZoomVal, setSliderZoomVal] = React.useState<number[] | number>([1]);
   const [phobiaTitle, setPhobiaTitle] = React.useState('');
@@ -74,7 +77,8 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
     setSliderPagesVal(data);
     console.log(data);
   };
-  const updateFearRange = (eevent: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const updateFearRange = (eevent: ChangeEvent<Record<string, unknown>>, data: any) => {
     setSliderFearVal(data);
     console.log(data);
   };
@@ -85,7 +89,10 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
 
   const playPhobia = () => {
     // Some promises here.
-    history.push('/phobia/play/23213123');
+    startRequest(sliderFearVal[0], sliderFearVal[1], phobiaTitle).then((dataID) => {
+      console.log(dataID);
+      history.push('/phobia/play/23213123');
+    });
   };
 
   const capitalise = (str: string) => {

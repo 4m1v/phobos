@@ -40,6 +40,7 @@ const toSlide = (entity: SlideEntity): Slide => {
 };
 
 export const toSession = (entity: SessionEntity): Session => {
+  console.log(entity);
   return {
     id: entity.id,
     fearMin: entity.fearMin,

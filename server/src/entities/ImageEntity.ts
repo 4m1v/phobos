@@ -32,7 +32,7 @@ class ImageEntity {
   @JoinColumn({ name: 'phobiaId' })
   public phobia: PhobiaEntity;
 
-  @OneToMany(() => SlideEntity, (entity) => entity.imageId)
+  @OneToMany(() => SlideEntity, (entity) => entity.image)
   @JoinColumn()
   public slides: SlideEntity[];
 

@@ -10,11 +10,11 @@ class PhobiaEntity {
   @Column({ nullable: false })
   public description: string;
 
-  @OneToMany(() => ImageEntity, (entity) => entity.phobiaId)
+  @OneToMany(() => ImageEntity, (entity) => entity.phobia)
   @JoinColumn()
   public images: ImageEntity[];
 
-  @OneToMany(() => SessionEntity, (entity) => entity.phobiaId)
+  @OneToMany(() => SessionEntity, (entity) => entity.phobia)
   @JoinColumn()
   public sessions: SessionEntity[];
 

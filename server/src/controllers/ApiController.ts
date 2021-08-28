@@ -22,10 +22,9 @@ class AnnouncementController {
   private readonly slideRepository: SlideRepository;
 
   @Get('/phobias')
-  @Post('/start')
   @OpenAPI({
     summary: '',
-    description: '',
+    description: 'Output of `Phobia[]`',
   })
   public async phobias(): Promise<Phobia[]> {
     const phobias = await this.phobiaRepository.getAll();
@@ -55,8 +54,8 @@ class AnnouncementController {
     description: 'Output of `Image` defined in api.ts',
   })
   public async play(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Image> {
-    sessionId;
-    const imageId = await getNextImage(sessionId);
+    //const imageId = await getNextImage(sessionId, this.imageRepository);
+    const imageId = await this.imageRepository.getId();
     const image = await this.imageRepository.getById(imageId);
     return toImage(image);
   }
@@ -70,11 +69,12 @@ class AnnouncementController {
     @BodyParam('imageId', { required: true }) imageId: string,
     @BodyParam('sessionId', { required: true }) sessionId: string,
     @BodyParam('scariness', { required: true }) scariness: number,
-  ): Promise<void> {
+  ): Promise<Record<string, never>> {
     const slideLen = await this.sessionRepository.getSlideLenById(sessionId);
     const slide = await this.slideRepository.createSlide(slideLen, scariness, imageId, sessionId);
     await this.sessionRepository.editSlideLenById(sessionId, slideLen + 1);
     addFeedbackToRecommender(sessionId, slide);
+    return {};
   }
 
   @Post('/result')
@@ -83,7 +83,9 @@ class AnnouncementController {
     description: 'Output of `Session` defined in api.ts',
   })
   public async result(@BodyParam('sessionId', { required: true }) sessionId: string): Promise<Session> {
+    console.log(sessionId);
     const session = await this.sessionRepository.getByIdWithSlides(sessionId);
+    console.log(session);
     return toSession(session);
   }
 }

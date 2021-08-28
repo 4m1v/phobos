@@ -5,7 +5,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import PhobiaEntity from './PhobiaEntity';
@@ -13,7 +13,7 @@ import SlideEntity from './SlideEntity';
 
 @Entity('Session')
 class SessionEntity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   public id: string;
 
   @Column({ nullable: false })
@@ -32,7 +32,7 @@ class SessionEntity {
   @Column({ nullable: false, default: 0 })
   public slidesLen: number;
 
-  @OneToMany(() => SlideEntity, (entity) => entity.sessionId)
+  @OneToMany(() => SlideEntity, (entity) => entity.session)
   @JoinColumn()
   public slides: SlideEntity[];
 
