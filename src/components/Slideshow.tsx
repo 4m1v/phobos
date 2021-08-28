@@ -1,17 +1,9 @@
 import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
-import {
-  makeStyles,
-  createStyles,
-  Theme,
-  Button,
-  LinearProgress,
-  Slider,
-  Typography,
-  withStyles,
-} from '@material-ui/core';
+import { makeStyles, createStyles, Theme, Button, Slider, Typography } from '@material-ui/core';
 import useCountDown from 'react-countdown-hook';
+import BorderLinearProgress from './BorderLinearProgress';
 
 // constants
 import { ZOOM_MIN, ZOOM_MAX } from '../utils/constants';
@@ -23,23 +15,6 @@ interface SlideshowProps {
 /*
 Take in a correctly ordered array of images with their links and ids, and an auto zoom setting (which should be modifiable here)
 */
-const BorderLinearProgress = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      height: 20,
-      // borderRadius: 5,
-      marginBottom: '20px',
-    },
-    colorPrimary: {
-      backgroundColor: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-    },
-    bar: {
-      // borderRadius: 5,
-      // backgroundColor: '#1a90ff',
-      opacity: '80%',
-    },
-  }),
-)(LinearProgress);
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
@@ -91,7 +66,6 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [mediaContSize, setMediaContSize] = useState(10);
   const [mediaHundredWidth, setMediaHundredWidth] = useState(false);
   const media = useRef<HTMLImageElement>(null);
-  const [finishedSlide, setFinishedSlide] = useState(false);
   const [barTimer, setBarTimer] = useState<number>(0);
   const [timerStarted, setTimerStarted] = useState<boolean>(false);
   const initialTime = 5000;
