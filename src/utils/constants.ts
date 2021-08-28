@@ -28,3 +28,34 @@ export const PHOBIAS = [
 // ZOOM
 export const ZOOM_MIN = 25;
 export const ZOOM_MAX = 1000;
+
+export const PAGEMARKS = [
+  {
+    value: 1,
+    label: '1',
+  },
+  {
+    value: 20,
+    label: '20',
+  },
+];
+export const FEARFACTORMARKS = [
+  {
+    value: 0,
+    label: '😀',
+  },
+  {
+    value: 100,
+    label: '💀',
+  },
+];
+export const AUTOZOOMMARKS = [
+  {
+    value: 1,
+    label: '1',
+  },
+  {
+    value: 100,
+    label: '100',
+  },
+];
