@@ -8,6 +8,7 @@
     "start": "node index.js"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "json-graphql-server": "^2.2.3"
   }
 }
