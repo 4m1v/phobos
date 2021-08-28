@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import clsx from 'clsx';
 import {
   makeStyles,
   createStyles,
@@ -25,15 +26,17 @@ Take in a correctly ordered array of images with their links and ids, and an aut
 const BorderLinearProgress = withStyles((theme: Theme) =>
   createStyles({
     root: {
-      height: 25,
-      borderRadius: 5,
+      height: 20,
+      // borderRadius: 5,
+      marginBottom: '20px',
     },
     colorPrimary: {
       backgroundColor: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
     },
     bar: {
-      borderRadius: 5,
-      backgroundColor: '#1a90ff',
+      // borderRadius: 5,
+      // backgroundColor: '#1a90ff',
+      opacity: '80%',
     },
   }),
 )(LinearProgress);
@@ -73,6 +76,11 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '0 35%',
       paddingTop: '20px',
     },
+    hiddenFade: {
+      opacity: 0,
+      visibility: 'hidden',
+      transition: 'opacity 0.75s ease-in-out, visibility 0.75s',
+    },
   }),
 );
 
@@ -84,15 +92,33 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [mediaHundredWidth, setMediaHundredWidth] = useState(false);
   const media = useRef<HTMLImageElement>(null);
   const [finishedSlide, setFinishedSlide] = useState(false);
-
+  const [barTimer, setBarTimer] = useState<number>(0);
+  const [timerStarted, setTimerStarted] = useState<boolean>(false);
   const initialTime = 5000;
   const interval = 100;
   // Set the media container size according to zoom
+  const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   // const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
   useEffect(() => {
     setMediaContSize(100 * (zoom / ZOOM_MAX));
+    if (zoom === ZOOM_MAX) {
+      start();
+      setTimerStarted(true);
+    } else {
+      pause();
+      reset();
+      setTimerStarted(false);
+    }
   }, [zoom]);
+
+  useEffect(() => {
+    if (!timerStarted) {
+      setBarTimer(0);
+    } else {
+      setBarTimer(Math.round(100 - (timeLeft / initialTime) * 100));
+    }
+  }, [timeLeft, timerStarted]);
 
   // Determine whether the media's size should be limited by the width or height of its container
   useEffect(() => {
@@ -106,12 +132,18 @@ const Slideshow: FC<Record<string, never>> = () => {
     <main>
       <div className={classes.roundUi}>
         <div className={classes.roundHeader}>
-          <Button variant="contained">Back</Button>
+          {/* <Button variant="contained">Back</Button> */}
           {
             // Max zoom timer
-            // <BorderLinearProgress variant="determinate" value={Math.round((timeLeft / initialTime) * 100)} />
+            <BorderLinearProgress
+              className={clsx({
+                [classes.hiddenFade]: !timerStarted,
+              })}
+              variant="determinate"
+              value={barTimer}
+            />
           }
-          <Button variant="contained">Help</Button>
+          {/* <Button variant="contained">Help</Button> */}
         </div>
       </div>
       <div className={classes.mediaContainer}>
