@@ -5,7 +5,6 @@ import { makeStyles, createStyles, Theme, CssBaseline } from '@material-ui/core'
 // components
 import Header from './Header';
 import Navigation from './Navigation';
-import Footer from './Footer';
 
 // constants
 import { DRAWER_WIDTH, FOOTER_HEIGHT } from '../utils/constants';
@@ -21,12 +20,8 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
-      minHeight: `calc(100vh - ${FOOTER_HEIGHT}px)`,
+      minHeight: '100vh',
       background: theme.palette.background.paper,
-      marginLeft: theme.spacing(7) + 1,
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(9) + 1,
-      },
     },
     toolbar: {
       ...theme.mixins.toolbar,
@@ -56,18 +51,10 @@ const Layout: FC<LayoutProps> = ({ toggleTheme, useDefaultTheme, children }: Lay
     <div className={classes.root}>
       <CssBaseline />
       <Header open={open} handleMenuOpen={toggle} toggleTheme={toggleTheme} useDefaultTheme={useDefaultTheme} />
-      <Navigation open={open} handleMenuClose={toggle} />
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
+      <main className={classes.content}>
         <div className={classes.toolbar} />
         {children}
       </main>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 };
