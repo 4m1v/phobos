@@ -27,6 +27,8 @@ for post in subreddit.hot(limit=150):
             "link": post.url,
             "score": post.score,
             "ratio": post.upvote_ratio,
+            "scariness": 0,
+            "seen": 0
         })
 
 json = json.dumps(output, indent=2)
