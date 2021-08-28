@@ -30,7 +30,8 @@ const request = (method: Method, url: string, body: any = {}): Promise<any> => {
   if (method !== 'GET') {
     requestOptions.body = JSON.stringify(body);
   }
-
+  console.log(requestOptions);
+  console.log(`${url}`);
   return fetch(url, requestOptions)
     .then((res) => res.json().then((json) => ({ status: res.status, json })))
     .then((res) => {
@@ -42,11 +43,11 @@ const request = (method: Method, url: string, body: any = {}): Promise<any> => {
 };
 
 export const phobiasRequest = (): Promise<Phobia[]> => {
-  return request('GET', `${config.url}/phobias`);
+  return request('GET', `${config.url}/api/phobias`);
 };
 
 export const startRequest = (fearMin: number, fearMax: number, phobiaId: string): Promise<{ sessionId: string }> => {
-  return request('POST', `${config.url}/start`, {
+  return request('POST', `${config.url}/api/start`, {
     fearMin,
     fearMax,
     phobiaId,
@@ -54,13 +55,13 @@ export const startRequest = (fearMin: number, fearMax: number, phobiaId: string)
 };
 
 export const playRequest = (sessionId: string): Promise<Image> => {
-  return request('POST', `${config.url}/play`, {
+  return request('POST', `${config.url}/api/play`, {
     sessionId,
   });
 };
 
 export const feedbackRequest = (imageId: string, sessionId: string, scariness: number): Promise<void> => {
-  return request('POST', `${config.url}/feedback`, {
+  return request('POST', `${config.url}/api/feedback`, {
     imageId,
     sessionId,
     scariness,
@@ -68,7 +69,7 @@ export const feedbackRequest = (imageId: string, sessionId: string, scariness: n
 };
 
 export const resultRequest = (sessionId: string): Promise<Session> => {
-  return request('POST', `${config.url}/start`, {
+  return request('POST', `${config.url}/api/start`, {
     sessionId,
   });
 };

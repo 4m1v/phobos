@@ -12,7 +12,6 @@ import Container from '@material-ui/core/Container';
 import { APP_TITLE, PAGE_TITLE_SETTINGS, PAGEMARKS, FEARFACTORMARKS, AUTOZOOMMARKS } from '../utils/constants';
 
 import { startRequest } from '../utils/requests';
-import { PHOBIAS } from '../utils/constants';
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
@@ -70,7 +69,6 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
 
   React.useEffect(() => {
     setPhobiaTitle(params.category);
-    console.log('hello');
   }, []);
 
   const updatePagesRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {
@@ -89,10 +87,14 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
 
   const playPhobia = () => {
     // Some promises here.
-    startRequest(sliderFearVal[0], sliderFearVal[1], phobiaTitle).then((dataID) => {
-      console.log(dataID);
-      history.push('/phobia/play/23213123');
-    });
+    startRequest(sliderFearVal[0], sliderFearVal[1], phobiaTitle)
+      .then((dataID) => {
+        console.log(dataID);
+        history.push('/phobia/play/23213123');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const capitalise = (str: string) => {
