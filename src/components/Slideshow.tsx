@@ -1,4 +1,4 @@
-import { ReactElement, useState, useRef, useEffect } from 'react';
+import { FC, ReactElement, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles, Theme, Button, LinearProgress, Slider } from '@material-ui/core';
 
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Slideshow = ({ tmp }: SlideshowProps): ReactElement => {
+const Slideshow: FC<Record<string, never>> = () => {
   const classes = useStyles();
   const zoomIncrement = 50;
   const [zoom, setZoom] = useState(ZOOM_MIN);
