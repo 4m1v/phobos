@@ -119,7 +119,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
                 Images
               </Typography>
               <Slider
-                aria-label="Images"
+                aria-labelledby="Images"
                 step={1}
                 color="primary"
                 valueLabelDisplay="on"
@@ -133,7 +133,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
                 Fear Factor
               </Typography>
               <Slider
-                aria-label="Fear Factor"
+                aria-labelledby="Fear Factor"
                 step={1}
                 color="primary"
                 valueLabelDisplay="on"
@@ -162,7 +162,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
                     Speed
                   </Typography>
                   <Slider
-                    aria-label="Auto Zoom"
+                    aria-labelledby="Auto Zoom"
                     step={1}
                     color="secondary"
                     min={1}
