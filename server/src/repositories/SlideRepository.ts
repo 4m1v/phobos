@@ -5,6 +5,7 @@ import SlideEntity from '../entities/SlideEntity';
 class SlideRepository extends Repository<SlideEntity> {
   public findByImageId(imageId: string): Promise<SlideEntity[]> {
     return this.find({
+      take: 100,
       order: {
         createdAt: 'DESC',
       },

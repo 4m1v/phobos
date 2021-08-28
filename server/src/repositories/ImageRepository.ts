@@ -18,6 +18,7 @@ class ImageRepository extends Repository<ImageEntity> {
 
   public findByPhobiaId(phobiaId: string): Promise<ImageEntity[]> {
     return this.find({
+      take: 100,
       order: {
         createdAt: 'DESC',
       },
@@ -29,6 +30,7 @@ class ImageRepository extends Repository<ImageEntity> {
 
   public findInScarinessRangeAndPhobiaId(min: number, max: number, phobiaId?: string): Promise<ImageEntity[]> {
     return this.find({
+      take: 100,
       order: {
         createdAt: 'DESC',
       },

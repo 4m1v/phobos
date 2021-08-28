@@ -20,11 +20,13 @@ class SessionRepository extends Repository<SessionEntity> {
     });
   }
 
-  public findByPhobiaId(phobiaId: string): Promise<SessionEntity[]> {
+  public findByPhobiaIdWithSlides(phobiaId: string): Promise<SessionEntity[]> {
     return this.find({
+      take: 100,
       order: {
         createdAt: 'DESC',
       },
+      relations: ['slides'],
       where: {
         phobiaId,
       },

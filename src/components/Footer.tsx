@@ -1,5 +1,5 @@
 import { FC, ReactElement } from 'react';
-import { makeStyles, createStyles, Theme, Link } from '@material-ui/core';
+import { Link, Theme, createStyles, makeStyles } from '@material-ui/core';
 
 // constants
 import { FOOTER_TEXT, FOOTER_HEIGHT } from '../utils/constants';

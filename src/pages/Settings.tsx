@@ -80,7 +80,7 @@ const Settings: FC<Record<string, never>> = (): ReactElement => {
     setSliderPagesVal(data);
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const updateFearRange = (eevent: ChangeEvent<Record<string, unknown>>, data: any) => {
+  const updateFearRange = (event: ChangeEvent<Record<string, unknown>>, data: any) => {
     setSliderFearVal(data);
   };
   const updateZoomRange = (event: ChangeEvent<Record<string, unknown>>, data: number[] | number) => {

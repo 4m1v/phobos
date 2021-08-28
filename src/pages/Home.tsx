@@ -1,8 +1,8 @@
 import { FC, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
-import { makeStyles, createStyles, Theme, Typography } from '@material-ui/core';
+import { Theme, Typography, makeStyles, createStyles } from '@material-ui/core';
+
 // components
-import PageTitle from '../components/PageTitle';
 import Categories from '../components/Categories';
 
 import logo from '../img/phoboss.png';

@@ -1,8 +1,8 @@
-import React, { ChangeEvent, FC, ReactElement } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { FC, ReactElement } from 'react';
+import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { Slider, Typography, Checkbox, Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 // components
 import PageTitle from '../components/PageTitle';
@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container';
 import LineGraph from '../components/LineGraph';
 
 // constants
-import { APP_TITLE, PAGE_TITLE_SETTINGS, PAGEMARKS, FEARFACTORMARKS, AUTOZOOMMARKS } from '../utils/constants';
+import { APP_TITLE } from '../utils/constants';
 
 import { resultRequest } from '../utils/requests';
 import { Session, Slide } from '../api';
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const parseResults = (res: Session) => {
+const parseResults = (res: Session): { x: number; y: number }[] => {
   return res.slides.map((slide: Slide) => ({
     x: slide.order,
     y: slide.scariness,
@@ -45,14 +45,15 @@ const parseResults = (res: Session) => {
 
 const Results: FC<Record<string, never>> = (): ReactElement => {
   const classes = useStyles();
-  const history = useHistory();
   const params: { sessionID: string } = useParams();
 
-  const [results, setResults] = React.useState<any>([]);
+  const [results, setResults] = React.useState<{ x: number; y: number }[]>([]);
   React.useEffect(() => {
-    resultRequest(params.sessionID).then((info) => {
-      setResults(parseResults(info));
-    });
+    resultRequest(params.sessionID)
+      .then((info) => {
+        setResults(parseResults(info));
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   return (

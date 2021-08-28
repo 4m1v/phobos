@@ -1,7 +1,6 @@
 import React, { FC, useState, useRef, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-import clsx from 'clsx';
 import { makeStyles, createStyles, Theme, Slider, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useCountDown from 'react-countdown-hook';
@@ -77,6 +76,7 @@ const Slideshow: FC<Record<string, never>> = () => {
   const [timerStarted, setTimerStarted] = useState<boolean>(false);
   const initialTime = 3000;
   const interval = 50;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -86,6 +86,7 @@ const Slideshow: FC<Record<string, never>> = () => {
 
   // Slideshow state
   const sessionPageMax = sessionStorage.getItem('pageMax');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [pageMax, setPageMax] = useState(sessionPageMax ? JSON.parse(sessionPageMax) : 1);
   const [pageCurr, setPageCurr] = useState(1);
   const [imageUrl, setImageUrl] = useState('');
@@ -96,10 +97,12 @@ const Slideshow: FC<Record<string, never>> = () => {
   };
 
   useEffect(() => {
-    playRequest(params.sessionID).then((info) => {
-      setImageUrl(info.url);
-      setImageId(info.id);
-    });
+    playRequest(params.sessionID)
+      .then((info) => {
+        setImageUrl(info.url);
+        setImageId(info.id);
+      })
+      .catch((e) => console.log(e));
     resetZoom();
   }, [pageCurr]);
 
@@ -145,7 +148,7 @@ const Slideshow: FC<Record<string, never>> = () => {
         isLast={pageMax == pageCurr}
         scariness={scariness}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        setScariness={(n: any) => setScariness(n)}
+        setScariness={(newScariness: any) => setScariness(newScariness)}
         handleClose={() => setDialogOpen(false)}
         onNext={() => {
           feedbackRequest(imageId, params.sessionID, scariness).catch((e) => console.log(e));
@@ -215,8 +218,8 @@ const Slideshow: FC<Record<string, never>> = () => {
             },
           ]}
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          onChange={(event, newValue: any) => {
-            setZoom(newValue);
+          onChange={(event, newZoom: any) => {
+            setZoom(newZoom);
           }}
           className={classes.zoomSlider}
         />

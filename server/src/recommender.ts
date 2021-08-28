@@ -62,9 +62,13 @@ let currentSession: CurrentSession = {
 
 const imageList: string[] = [
   // "0", "1", "2"
-  ];
+];
 
-export const initRecommender = async (session: SessionEntity): Promise<void> => {
+export const initRecommender = async (
+  session: SessionEntity,
+  imageRepository: ImageRepository,
+  sessionRepository: SessionRepository
+): Promise<void> => {
   currentSession = {
     id: session.id,
     fearMin: session.fearMin,
@@ -74,21 +78,11 @@ export const initRecommender = async (session: SessionEntity): Promise<void> => 
     predictedRatings: [],
   };
 
-  const connection = await createConnection({
-    type: "sqlite",
-    database: process.env.DB,
-    entities: [__dirname + "../../entities/*.ts"],
-  });
-  await connection.synchronize();
-
-  const imageRepository = getCustomRepository(ImageRepository);
-  const sessionRepository = getCustomRepository(SessionRepository);
-
   for (const img of await imageRepository.findByPhobiaId(session.phobiaId)) {
     imageList.push(img.id);
   }
 
-  const sessions = await sessionRepository.findByPhobiaId(session.phobiaId);
+  const sessions = await sessionRepository.findByPhobiaIdWithSlides(session.phobiaId);
   sessions.forEach((element) => {
     const result: { imageId: string; scariness: number; order: number; adjustedScariness: number }[] = [];
     element.slides.forEach((slide) => {
@@ -192,7 +186,7 @@ export const getNextImage = async (sessionId: string): Promise<string> => {
   }
 
   // Pattern match, and recalculate predicted ratings
-  // recalculatePredictedRatings();
+  recalculatePredictedRatings();
 
   // Choose top 1
   currentSession.predictedRatings.sort((a: any, b: any) => b.scariness - a.scariness);

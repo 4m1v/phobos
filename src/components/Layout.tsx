@@ -1,13 +1,8 @@
 import { FC, ReactNode, useReducer } from 'react';
-import clsx from 'clsx';
 import { makeStyles, createStyles, Theme, CssBaseline } from '@material-ui/core';
 
 // components
 import Header from './Header';
-import Navigation from './Navigation';
-
-// constants
-import { DRAWER_WIDTH, FOOTER_HEIGHT } from '../utils/constants';
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>

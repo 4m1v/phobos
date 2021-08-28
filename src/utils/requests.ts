@@ -1,6 +1,6 @@
 import config from '../config/config';
 
-import type { Image, Phobia, Session } from '../api';
+import type { Image, Session } from '../api';
 
 type RequestOptions = {
   headers: {
@@ -18,6 +18,7 @@ type Method = 'GET' | 'POST';
  * without having to worry about issues with fetch
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const request = (method: Method, url: string, body: any = {}): Promise<any> => {
   const requestOptions: RequestOptions = {
     headers: {
@@ -39,10 +40,6 @@ const request = (method: Method, url: string, body: any = {}): Promise<any> => {
       }
       return res.json;
     });
-};
-
-export const phobiasRequest = (): Promise<Phobia[]> => {
-  return request('GET', `${config.url}/api/phobias`);
 };
 
 export const startRequest = (fearMin: number, fearMax: number, phobiaId: string): Promise<{ sessionId: string }> => {
