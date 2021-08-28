@@ -37,14 +37,6 @@ class SessionRepository extends Repository<SessionEntity> {
     const result = this.create({ fearMin, fearMax, phobiaId });
     return this.save(result);
   }
-
-  public getSlideLenById(id: string): Promise<number> {
-    return this.getById(id).then((session) => session.slidesLen);
-  }
-
-  public async editSlideLenById(id: string, slidesLen: number): Promise<void> {
-    await this.update({ id }, { slidesLen });
-  }
 }
 
 export default SessionRepository;

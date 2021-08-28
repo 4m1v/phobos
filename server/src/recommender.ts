@@ -1,4 +1,3 @@
-import { createConnection, getCustomRepository } from 'typeorm';
 import ImageEntity from './entities/ImageEntity';
 import SessionEntity from './entities/SessionEntity';
 import SlideEntity from './entities/SlideEntity';
@@ -98,15 +97,17 @@ export const initRecommender = async (
   });
 };
 
-export const recalculatePredictedRatings = (): any => {
+export const recalculatePredictedRatings = (): void => {
   currentSession.predictedRatings = [];
   const viewed: { [x: string]: number } = {};
   let currentSeshMod = 0;
   // Get what images the current session has viewed, represented in a different way.
-  currentSession.slides.forEach((slide: any) => {
-    viewed[slide.imageId] = slide.scariness;
-    currentSeshMod += slide.scariness * slide.scariness;
-  });
+  currentSession.slides.forEach(
+    (slide: { imageId: string; scariness: number; order: number; adjustedScariness: number }) => {
+      viewed[slide.imageId] = slide.scariness;
+      currentSeshMod += slide.scariness * slide.scariness;
+    },
+  );
   currentSeshMod = Math.sqrt(currentSeshMod);
 
   // Calculate similarity between users
@@ -148,7 +149,6 @@ export const recalculatePredictedRatings = (): any => {
       }
     });
   });
-  // console.log(currentSession.predictedRatings);
 
   // Storing calculated predictions into the currentSession
   for (const key in predictions) {
@@ -159,9 +159,6 @@ export const recalculatePredictedRatings = (): any => {
       });
     }
   }
-
-  // console.log(currentSession.predictedRatings);
-  return currentSession.predictedRatings;
 };
 
 export const getNextImage = async (sessionId: string, imageRepository: ImageRepository): Promise<string> => {
@@ -180,7 +177,9 @@ export const getNextImage = async (sessionId: string, imageRepository: ImageRepo
   recalculatePredictedRatings();
 
   // Choose top 1
-  currentSession.predictedRatings.sort((a: any, b: any) => b.scariness - a.scariness);
+  currentSession.predictedRatings.sort(
+    (a: { scariness: number }, b: { scariness: number }) => b.scariness - a.scariness,
+  );
   const image = currentSession.predictedRatings[0];
   // Return it
   return image.imageId;

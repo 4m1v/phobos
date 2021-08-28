@@ -9,7 +9,8 @@ import { QueryFailedError } from 'typeorm';
  */
 @Middleware({ type: 'after' })
 export class ErrorHander implements ExpressErrorMiddlewareInterface {
-  error(error: any, request: any, response: any, next: (error: any) => any): void {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+  error(error: any, _request: any, response: any, _next: (error: any) => any): void {
     if (error instanceof QueryFailedError) {
       response.status(400);
       response.json({

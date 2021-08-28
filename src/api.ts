@@ -13,7 +13,6 @@ export type Session = {
   fearMin: number;
   fearMax: number;
   phobiaId: string;
-  slidesLen: number;
   slides: Slide[];
 };
 

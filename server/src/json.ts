@@ -35,7 +35,6 @@ export const toSession = (entity: SessionEntity): Session => {
     fearMin: entity.fearMin,
     fearMax: entity.fearMax,
     phobiaId: entity.phobiaId,
-    slidesLen: entity.slidesLen,
     slides: entity.slides.map((slide) => toSlide(slide)),
   };
 };

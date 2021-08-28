@@ -2,11 +2,10 @@ import { BodyParam, Post, JsonController } from 'routing-controllers';
 import { OpenAPI } from 'routing-controllers-openapi';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import ImageRepository from '../repositories/ImageRepository';
-import PhobiaRepository from '../repositories/PhobiaRepository';
 import SessionRepository from '../repositories/SessionRepository';
 import SlideRepository from '../repositories/SlideRepository';
 import { toImage, toSession } from '../json';
-import { initRecommender, getNextImage, addFeedbackToRecommender, recalculatePredictedRatings } from '../recommender';
+import { initRecommender, getNextImage, addFeedbackToRecommender } from '../recommender';
 
 import type { Image, Session } from '../../../src/api';
 
@@ -14,8 +13,6 @@ import type { Image, Session } from '../../../src/api';
 class AnnouncementController {
   @InjectRepository()
   private readonly imageRepository: ImageRepository;
-  @InjectRepository()
-  private readonly phobiaRepository: PhobiaRepository;
   @InjectRepository()
   private readonly sessionRepository: SessionRepository;
   @InjectRepository()
@@ -60,9 +57,8 @@ class AnnouncementController {
     @BodyParam('sessionId', { required: true }) sessionId: string,
     @BodyParam('scariness', { required: true }) scariness: number,
   ): Promise<Record<string, never>> {
-    const slideLen = await this.sessionRepository.getSlideLenById(sessionId);
-    const slide = await this.slideRepository.createSlide(slideLen, scariness, imageId, sessionId);
-    await this.sessionRepository.editSlideLenById(sessionId, slideLen + 1);
+    const session = await this.sessionRepository.getByIdWithSlides(sessionId);
+    const slide = await this.slideRepository.createSlide(session.slides.length, scariness, imageId, sessionId);
     addFeedbackToRecommender(sessionId, slide);
     return {};
   }

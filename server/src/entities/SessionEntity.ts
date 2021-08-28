@@ -29,9 +29,6 @@ class SessionEntity {
   @JoinColumn({ name: 'phobiaId' })
   public phobia: PhobiaEntity;
 
-  @Column({ nullable: false, default: 0 })
-  public slidesLen: number;
-
   @OneToMany(() => SlideEntity, (entity) => entity.session)
   @JoinColumn()
   public slides: SlideEntity[];
