@@ -1,11 +1,10 @@
 import { FC, ReactElement } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Typography, makeStyles, createStyles, Container } from '@material-ui/core';
+import { Container, Typography, makeStyles, createStyles } from '@material-ui/core';
 import { useQuery, gql } from '@apollo/client';
 
 // components
-// import BodyContainer from '../components/BodyContainer';
 import PageTitle from '../components/PageTitle';
 
 // constants

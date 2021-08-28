@@ -1,24 +1,24 @@
 import { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, createStyles, Theme } from '@material-ui/core';
-// @ts-ignore
-import ReactWordcloud from 'react-wordcloud';
-
-interface CategoriesProps {
-  categories: string[];
-}
+import { Chip, makeStyles, createStyles, Theme } from '@material-ui/core';
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flex: 1,
       display: 'flex',
       justifyContent: 'center',
-      background: theme.palette.background.paper,
+      flexWrap: 'wrap',
+      '& > *': {
+        margin: theme.spacing(2.5),
+      },
     },
   }),
 );
+
+interface CategoriesProps {
+  categories: string[];
+}
 
 // functional component
 const Categories = ({ categories }: CategoriesProps): ReactElement => {
@@ -26,23 +26,20 @@ const Categories = ({ categories }: CategoriesProps): ReactElement => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <ReactWordcloud
-        callbacks={{
-          onWordClick: (word: { text: any }) => history.push(`/settings/${word.text}`),
-        }}
-        options={{
-          deterministic: true,
-          enableTooltip: false,
-          fontFamily: 'sans-serif',
-          fontSizes: [30, 30],
-          fontStyle: 'italic',
-          padding: 30,
-          rotations: 0,
-        }}
-        words={categories.map((category) => {
-          return { text: category, value: 1 };
-        })}
-      />
+      {categories.map((category) => (
+        <Chip
+          key={category}
+          label={category}
+          variant="outlined"
+          color="primary"
+          onClick={() => history.push(`/phobia/${category}`)}
+          style={{
+            padding: 25,
+            fontSize: 20,
+          }}
+          clickable
+        />
+      ))}
     </div>
   );
 };
