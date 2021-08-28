@@ -1,9 +1,9 @@
-import { createConnection, getCustomRepository } from 'typeorm';
-import ImageEntity from './entities/ImageEntity';
-import SessionEntity from './entities/SessionEntity';
-import SlideEntity from './entities/SlideEntity';
-import ImageRepository from './repositories/ImageRepository';
-import SessionRepository from './repositories/SessionRepository';
+import { createConnection, getCustomRepository } from "typeorm";
+import ImageEntity from "./entities/ImageEntity";
+import SessionEntity from "./entities/SessionEntity";
+import SlideEntity from "./entities/SlideEntity";
+import ImageRepository from "./repositories/ImageRepository";
+import SessionRepository from "./repositories/SessionRepository";
 
 const data: {
   sessionId: string;
@@ -49,13 +49,13 @@ interface CurrentSession {
 }
 
 let currentSession: CurrentSession = {
-  id: 'really',
+  id: "really",
   fearMin: 3,
   fearMax: 4.5,
-  phobiaId: 'hi',
+  phobiaId: "hi",
   slides: [
-    { imageId: '0', scariness: 3.2, order: 5, adjustedScariness: 3.2 },
-    { imageId: '1', scariness: 2.2, order: 1, adjustedScariness: 2.2 },
+    { imageId: "0", scariness: 3.2, order: 5, adjustedScariness: 3.2 },
+    { imageId: "1", scariness: 2.2, order: 1, adjustedScariness: 2.2 },
   ],
   predictedRatings: [],
 };
@@ -67,7 +67,7 @@ const imageList: string[] = [
 export const initRecommender = async (
   session: SessionEntity,
   imageRepository: ImageRepository,
-  sessionRepository: SessionRepository,
+  sessionRepository: SessionRepository
 ): Promise<void> => {
   currentSession = {
     id: session.id,
@@ -82,7 +82,7 @@ export const initRecommender = async (
     imageList.push(img.id);
   }
 
-  const sessions = await sessionRepository.findByPhobiaId(session.phobiaId);
+  const sessions = await sessionRepository.findByPhobiaIdWithSlides(session.phobiaId);
   sessions.forEach((element) => {
     const result: { imageId: string; scariness: number; order: number; adjustedScariness: number }[] = [];
     element.slides.forEach((slide) => {
@@ -165,9 +165,9 @@ export const recalculatePredictedRatings = (): any => {
 
 export const getNextImage = async (sessionId: string): Promise<string> => {
   const imageRepository = await createConnection({
-    type: 'sqlite',
+    type: "sqlite",
     database: process.env.DB,
-    entities: [__dirname + '../../entities/*.ts'],
+    entities: [__dirname + "../../entities/*.ts"],
   }).then(async (connection) => {
     await connection.synchronize();
 
@@ -179,14 +179,14 @@ export const getNextImage = async (sessionId: string): Promise<string> => {
     const images: ImageEntity[] = await imageRepository.findInScarinessRangeAndPhobiaId(
       currentSession.fearMin - 0.5,
       currentSession.fearMin + 0.5,
-      currentSession.phobiaId,
+      currentSession.phobiaId
     );
     const index = Math.floor(Math.random() * images.length);
     return images[index].id;
   }
 
   // Pattern match, and recalculate predicted ratings
-  // recalculatePredictedRatings();
+  recalculatePredictedRatings();
 
   // Choose top 1
   currentSession.predictedRatings.sort((a: any, b: any) => b.scariness - a.scariness);
