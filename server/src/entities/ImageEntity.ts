@@ -4,10 +4,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import PhobiaEntity from './PhobiaEntity';
+import SlideEntity from './SlideEntity';
 
 @Entity('Image')
 class ImageEntity {
@@ -30,14 +32,14 @@ class ImageEntity {
   @JoinColumn({ name: 'phobiaId' })
   public phobia: PhobiaEntity;
 
+  @OneToMany(() => SlideEntity, (entity) => entity.imageId)
+  @JoinColumn()
+  public slides: SlideEntity[];
+
   @CreateDateColumn({ type: 'datetime', default: () => "DATETIME('now')" })
   public createdAt: Date;
 
-  @UpdateDateColumn({
-    type: 'datetime',
-    default: () => "DATETIME('now')",
-    onUpdate: "DATETIME('now')",
-  })
+  @UpdateDateColumn()
   public updatedAt: Date;
 }
 

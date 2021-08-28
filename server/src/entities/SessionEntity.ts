@@ -32,18 +32,14 @@ class SessionEntity {
   @Column({ nullable: false, default: 0 })
   public slidesLen: number;
 
-  @OneToMany(() => SlideEntity, (item) => item.sessionId)
+  @OneToMany(() => SlideEntity, (entity) => entity.sessionId)
   @JoinColumn()
   public slides: SlideEntity[];
 
-  @CreateDateColumn({ type: 'datetime', default: () => "DATETIME('now')" })
+  @CreateDateColumn()
   public createdAt: Date;
 
-  @UpdateDateColumn({
-    type: 'datetime',
-    default: () => "DATETIME('now')",
-    onUpdate: "DATETIME('now')",
-  })
+  @UpdateDateColumn()
   public updatedAt: Date;
 }
 

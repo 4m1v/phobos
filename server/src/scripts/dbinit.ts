@@ -11,6 +11,7 @@ createConnection({
   database: process.env.DB,
   entities: [__dirname + '../../entities/*.ts'],
 }).then(async (connection) => {
+  await connection.query('PRAGMA foreign_keys=OFF');
   await connection.synchronize();
 
   const rawData = fs.readFileSync(__dirname + '/data.json');
@@ -19,14 +20,14 @@ createConnection({
   const phobiaRepository = getCustomRepository(PhobiaRepository);
   await Promise.all(
     data.phobias.map((phobia: { id: string }) => {
-      phobiaRepository.createPhobia(phobia.id);
+      phobiaRepository.createPhobia(phobia.id).catch((error) => console.error(error));
     }),
   );
 
   const imageRepository = getCustomRepository(ImageRepository);
   await Promise.all(
     data.images.map((image: { url: string; scariness: number; phobiaId: string }) => {
-      imageRepository.createImage(image.url, image.scariness, image.phobiaId);
+      imageRepository.createImage(image.url, image.scariness, image.phobiaId).catch((error) => console.error(error));
     }),
   );
 });

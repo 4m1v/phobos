@@ -10,7 +10,7 @@ import path from 'path';
 import morgan from 'morgan';
 import { serve, setup } from 'swagger-ui-express';
 
-import ApiController from 'controllers/ApiController';
+import ApiController from './controllers/ApiController';
 
 /**
  * Start Express server.
