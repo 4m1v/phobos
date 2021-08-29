@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) =>
 
 const parseResults = (res: Session): { x: number; y: number }[] => {
   return res.slides.map((slide: Slide) => ({
-    x: slide.order,
+    x: slide.order + 1,
     y: slide.scariness,
   }));
 };
