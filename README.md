@@ -14,27 +14,38 @@ Entry into SYNCSHACK 2021.
 
 ## Inspiration
 
-One of our friends has an overwhelming fear of spiders. There hasn't been any deaths from a spider bite in Australia since 1979 but that's no comfort. The fear is irrational, persistent, and sometimes overwhelming. They, and an estimated **10% of all people**, have a **phobia**, an anxiety disorder characterised as a fear of a specific thing or setting. Phobias aren't a joke and seriously affect people's lives so much so they unhealthily avoid harmless situations.
+One of our friends has an overwhelming fear of spiders. There hasn't been any deaths from a spider bite in Australia since 1979, but that's no comfort. The fear is irrational, persistent, and sometimes overwhelming. They, and an estimated **10% of all people**, have a **phobia**, an anxiety disorder characterised as a fear of a specific thing or setting. Phobias aren't a joke and seriously affect people's lives by causing them to unhealthily avoid harmless situations.
 
-Luckily, there is a solution! **Exposure theory** is a behaviour therapy to treat anxiety disorders like phobias. It works by simply bringing the patient close to the anxiety source without any danger. However, exposure theory isn't super easy to access, particularly during a worldwide pandemic...
+Luckily, there's a solution! **Exposure theory** is a behaviour therapy that has been highly effective in treating anxiety disorders such as phobias. It works by safely confronting the patient with the source of their anxiety, especially by gradually increasing the frightfulness of chosen stimuli. However, exposure theory isn't particularly easy to access, particularly during a worldwide pandemic...
 
-## What does it do?
-
-**Phobos** (named after the Greek god of fear) is our solution to help bring exposure theory to everyone who needs it. It's a simple web app built on psychological principles that gives patients control. Once landing on the home page, a patient will:
+## What it does
+**Phobos** (named after the Greek god of fear) is our solution to help bring exposure theory to everyone who wishes they could be free from a phobia. It's a simple web app built on psychological methods that gives users control. Once landing on the home page, a user will:
 
 1. Click on a specific phobia.
-2. Adjust settings such as their level of fear.
-3. Zoom in/out of images.
+2. Adjust settings such as the frightfulness of incoming images.
+3. Confront a scary image.
+4. Zoom in/out until they're able to witness the image at maximum zoom for some time.
 5. Rate the scariness of the image.
-6. See the results of how they responded.
+6. Continue exposing themselves to more images.
+7. Finally see statistics describing how they responded.
 
-The crucial part is that images are first shown super zoomed out so they don't freak. They can zoom in at their own pace and when they have seen enough, they move on to a different image. Patients also  get to rate how scary they find each image, data which is used by the recommendation system and inputted into the results of how they responded.
+Crucially, **images first appear super zoomed-out so the user doesn't panic**. They can then magnify the visual at their own pace. When they muster the courage to stay on maximum zoom for some time, the user is moved onto the next stimulus. This design smooths out the progression of scariness, which is a key quality of gradated exposure therapies, and maximises a sense of control and safety.
 
-We've built our app around a memory based, collaborative filtering **recommendation system** using adjusted cosine similarity. This recommends scary images to maximise psychological benefit, lowering/raising scariness depending on the patient's ratings.
+Users also get to rate how scary they find each image. This data is fed into the recommendation system and informs the user's final results screen.
 
-## How did we build it?
+We've built our app around a **memory based, collaborative filtering recommendation system using adjusted cosine similarity**. This recommends images at just the right level of frightfulness to maximise psychological benefit, lowering/raising scariness depending on the user's ratings.
 
-**Phobos** is a full stack web app built in TypeScript using a React frontend and a Node Express backend. We've crafted a minimalist user experience in the Material UI design system. Also, we've used Python scripts to call the Reddit API to create an image set of different phobias.
+## How we built it
+Phobos is a full stack web app built in TypeScript using a React frontend and a Node Express backend. We've crafted a minimalist user experience in the Material UI design system. Also, we've used Python scripts to call the Reddit API to create sample image sets for different phobias.
+
+## What's next for Phobos
+Due to the time limit of this hackathon, we were constrained to the minimal features that best represent our vision of this product. In the future, we aim to diversify the experience by adding:
+
+- Support for more phobias.
+- Videos and VR experiences.
+- Improved scariness calculation and service algorithms.
+- Community suggestions and voting for phobia images.
+- Accounts and gamification to motivate our users.
 
 ## Available Scripts
 
