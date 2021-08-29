@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "lint": "eslint '*/**/*.{js,ts}' --quiet --fix",
+    "lint": "eslint '*/**/*.{js,ts,json}' --ignore-pattern 'public/' --quiet --fix",
     "start": "DB='./dev.sqlite' ts-node src/server.ts",
     "wstart": "set DB=./dev.sqlite && ts-node src/server.ts",
     "dev": "DB='./dev.sqlite' nodemon src/server.ts",
@@ -62,7 +62,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx,json}": [
-      "eslint '*/**/*.{js,ts}' --quiet --fix"
+      "eslint '*/**/*.{js,ts,json}' --ignore-pattern 'public/' --quiet --fix"
     ]
   }
 }
